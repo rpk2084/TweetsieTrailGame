@@ -9,6 +9,7 @@ namespace TweetsieTrailGame
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("hello");
             Console.WriteLine("Hello World");
         }
     }
