@@ -25,6 +25,7 @@ namespace TweetsieTrailGame
             axles = sAxle;
         }
 
+        //Future note: this format is what is needed to override a method in c#
         public override String ToString()
         {
             return "\nWheels left: " + Wheels + "\nAxles left: " + Axles + "\nBatteries left: " + Batteries;

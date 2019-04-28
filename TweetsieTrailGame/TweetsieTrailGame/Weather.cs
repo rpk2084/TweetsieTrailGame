@@ -7,6 +7,8 @@ namespace TweetsieTrailGame
 {
     class Weather
     {
+
+        //getWeather just uses the built in random class to return a number 1-4. This can later be used to affect health
         public static String getWeather()
         {
             Random rnd = new Random();
