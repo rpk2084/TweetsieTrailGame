@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScoreTable.cs" />
+    <Compile Include="Shopping.cs" />
+    <Compile Include="Weather.cs" />
     <Compile Include="GolfCart.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

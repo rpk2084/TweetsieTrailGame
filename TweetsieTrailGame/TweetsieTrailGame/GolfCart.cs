@@ -25,6 +25,11 @@ namespace TweetsieTrailGame
             axles = sAxle;
         }
 
+        public override String ToString()
+        {
+            return "\nWheels left: " + Wheels + "\nAxles left: " + Axles + "\nBatteries left: " + Batteries;
+        }
+
         public int Wheels
         {
             get
