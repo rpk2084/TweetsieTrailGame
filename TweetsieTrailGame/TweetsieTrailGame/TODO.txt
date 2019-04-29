@@ -1,0 +1,5 @@
+﻿Location - parent class. may or may not need to be abstract
+Location types - child classes of locations (forks, forts)
+Map - list of locations, distance travelled (remove code from days), distance to next location
+Finish Hunter
+
