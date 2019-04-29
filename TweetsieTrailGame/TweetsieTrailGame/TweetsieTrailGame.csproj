@@ -41,14 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Combatant.cs" />
-    <Compile Include="Hunter.cs" />
-    <Compile Include="HunterJobInfo.cs" />
+    <Compile Include="Days.cs" />
+    <Compile Include="ScoreTable.cs" />
+    <Compile Include="Shopping.cs" />
+    <Compile Include="Weather.cs" />
+    <Compile Include="GolfCart.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
