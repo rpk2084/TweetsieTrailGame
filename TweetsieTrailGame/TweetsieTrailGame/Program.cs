@@ -9,10 +9,14 @@ namespace TweetsieTrailGame
     {
         static void Main(string[] args)
         {
-            //Create golf cart object so starting materials can be applied
-            GolfCart cart = new GolfCart();
+            
+            /* //Create golf cart object so starting materials can be applied
+            GolfCart cart = new GolfCart();*/
 
-            //Get the player's info so the game can continually update score
+            //Initializes the day, pace, and distance traveled to default
+            Days dayCycle = new Days();
+            dayCycle.continueTravel();
+            /*//Get the player's info so the game can continually update score
             Console.WriteLine("Please enter your name");
             String playerName = Console.ReadLine();
             ScoreTable player = new ScoreTable(playerName, 0);
@@ -26,7 +30,7 @@ namespace TweetsieTrailGame
             Console.WriteLine("Weather: " + Weather.getWeather());
 
             //When the game is over, collect the score. If top ten, it will be added to the highscores
-            ScoreTable.scoreGame(player);
+            ScoreTable.scoreGame(player);*/
             Console.ReadLine();
         }
     }
