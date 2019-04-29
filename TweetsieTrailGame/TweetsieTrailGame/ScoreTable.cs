@@ -17,7 +17,6 @@ namespace TweetsieTrailGame
         {
             name = sName;
             score = sScore;
-
         }
 
         public String Name
