@@ -12,7 +12,10 @@ namespace TweetsieTrailGame
             ConsoleTextViewer viewer = new ConsoleTextViewer();
             TextPresenter presenter = new TextPresenter(viewer);
 
-            TweetsieTrailGame game = new TweetsieTrailGame(presenter);
+            ConsoleInputReader reader = new ConsoleInputReader();
+            TextInputController controller = new TextInputController(reader);
+
+            TweetsieTrailGame game = new TweetsieTrailGame(presenter, controller);
 
             ////Create golf cart object so starting materials can be applied
             //GolfCart cart = new GolfCart();

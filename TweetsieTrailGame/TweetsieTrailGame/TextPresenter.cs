@@ -18,13 +18,13 @@ namespace TweetsieTrailGame
         {
             TextViewModel viewModel = new TextViewModel();
             viewModel.Lines.Add("Tweetsie Trail Game");
-            viewModel.Lines.Add("You have reached the end of the game. Congratulations!");
             viewer.displayText(viewModel);
         }
 
         public void showExitMessage()
         {
             TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
             viewModel.Lines.Add("Thank you for playing Tweetsie Trail");
             viewer.displayText(viewModel);
         }
