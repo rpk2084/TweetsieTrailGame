@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -87,6 +88,15 @@ namespace TweetsieTrailGame
             viewModel.Lines.Add("");
             viewModel.Lines.Add("Each wheel is $50. How many would you like to buy?");
             */
+        }
+        public void showScores()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            string[] lines = File.ReadAllLines(ScoreTable.filePath);
+            viewModel.Lines.Add("");
+            foreach (string line in lines)
+                viewModel.Lines.Add(line);
+            viewer.displayText(viewModel);
         }
 
         public void showTravel()

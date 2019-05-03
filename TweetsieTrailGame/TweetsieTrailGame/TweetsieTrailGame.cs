@@ -158,7 +158,7 @@ namespace TweetsieTrailGame
         }
         private void scoreBoard()
         {
-            ScoreTable.printScores();
+            uiPresenter.showScores();
             uiPresenter.showContinue();
             uiInputController.getStartMenuInput();
             gameState = GAME_STATE.GAME_STATE_START_MENU;
