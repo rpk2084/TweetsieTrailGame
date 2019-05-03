@@ -10,10 +10,10 @@ namespace TweetsieTrailGame
         private string name;
         private int health;
         private int strength;
-        private int scoreMultiplier;
+        private double scoreMultiplier;
         private int startingMoney;
 
-        public HunterJobInfo(string name, int health, int strength, int scoreMultiplier, int startingMoney)
+        public HunterJobInfo(string name, int health, int strength, double scoreMultiplier, int startingMoney)
         {
             this.name = name;
             this.health = health;
@@ -36,7 +36,10 @@ namespace TweetsieTrailGame
 
         public int Health
         {
-
+            get
+            {
+                return this.Health;
+            }
         }
     }
 }

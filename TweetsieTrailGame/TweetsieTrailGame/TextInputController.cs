@@ -18,5 +18,10 @@ namespace TweetsieTrailGame
         {
             reader.waitForKeyPress();
         }
+
+        public String getResponse()
+        {
+            return reader.getLine();
+        }
     }
 }

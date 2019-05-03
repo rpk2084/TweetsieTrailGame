@@ -8,5 +8,6 @@ namespace TweetsieTrailGame
     interface IInputController
     {
         void getStartMenuInput();
+        String getResponse();
     }
 }

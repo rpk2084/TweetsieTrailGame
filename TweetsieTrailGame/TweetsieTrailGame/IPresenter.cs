@@ -9,5 +9,9 @@ namespace TweetsieTrailGame
     {
         void showOpeningScreen();
         void showExitMessage();
+        void showNameRequest();
+        void showDecideJob();
+        void showErrorMessage();
+        void showStartMenuOptions();
     }
 }

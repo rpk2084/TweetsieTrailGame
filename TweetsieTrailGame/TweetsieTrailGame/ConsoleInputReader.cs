@@ -11,7 +11,12 @@ namespace TweetsieTrailGame
 
         public void waitForKeyPress()
         {
-            Console.ReadKey();
+            Console.ReadKey(true);
+        }
+
+        public String getLine()
+        {
+            return Console.ReadLine();
         }
     }
 }

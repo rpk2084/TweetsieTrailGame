@@ -8,5 +8,6 @@ namespace TweetsieTrailGame
     interface ITextInputReader
     {
         void waitForKeyPress();
+        String getLine();
     }
 }
