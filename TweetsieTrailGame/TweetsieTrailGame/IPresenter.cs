@@ -13,5 +13,6 @@ namespace TweetsieTrailGame
         void showDecideJob();
         void showErrorMessage();
         void showStartMenuOptions();
+        void showContinue();
     }
 }

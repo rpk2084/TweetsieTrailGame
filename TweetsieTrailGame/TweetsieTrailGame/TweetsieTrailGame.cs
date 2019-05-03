@@ -90,6 +90,10 @@ namespace TweetsieTrailGame
             {
                 gameState = GAME_STATE.GAME_STATE_SCORES;
             }
+            else if (option == 3)
+            {
+                gameState = GAME_STATE.GAME_STATE_QUIT;
+            }
             //gameState = GAME_STATE.GAME_STATE_QUIT;
         }
 
@@ -154,7 +158,10 @@ namespace TweetsieTrailGame
         }
         private void scoreBoard()
         {
-
+            ScoreTable.printScores();
+            uiPresenter.showContinue();
+            uiInputController.getStartMenuInput();
+            gameState = GAME_STATE.GAME_STATE_START_MENU;
         }
 
         private void shopMenu()
