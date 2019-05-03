@@ -5,8 +5,17 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
+    enum GAME_STATE
+    {
+        GAME_STATE_START_MENU,
+        GAME_STATE_TRAVELLING,
+        GAME_STATE_SHOPPING,
+        GAME_STATE_SCORES,
+        GAME_STATE_QUIT,
+        GAME_STATE_STARTING_INFO
+    };
 
-    class TweetsieTrailGame
+    class TweetsieGameController
     {
         //Declare Presenter, File formatter, etc.
         private IPresenter uiPresenter;
@@ -14,32 +23,23 @@ namespace TweetsieTrailGame
 
         //Declare entities
         private GAME_STATE gameState;
+        private TweetsieTrailGame game;
 
         //The constructor is the only part of this class that should be public
-        public TweetsieTrailGame(IPresenter presenter, IInputController controller)
+        public TweetsieGameController(IPresenter presenter, IInputController controller)
         {
             //Assign presenter, file formatter, etc.
             uiPresenter = presenter;
             uiInputController = controller;
-
-            //Get basic info for player creation
-            
-            //Hunter player = new Hunter(100, 20, name);
-
-            //Initialize entities
-            GolfCart cart = new GolfCart();
-            Days day = new Days();
-            
-            
 
             //start the main loop
             gameState = GAME_STATE.GAME_STATE_START_MENU;
             mainLoop();
         }
 
-        public void mainLoop()
+        private void mainLoop()
         {
-            while(gameState != GAME_STATE.GAME_STATE_QUIT)
+            while (gameState != GAME_STATE.GAME_STATE_QUIT)
             {
                 switch (gameState)
                 {
@@ -131,7 +131,7 @@ namespace TweetsieTrailGame
                 HunterJobInfo player = new HunterJobInfo(name, 100, 25, 1.2, 500);
                 return player;
             }
-            
+
         }
 
         private String getPlayerName()

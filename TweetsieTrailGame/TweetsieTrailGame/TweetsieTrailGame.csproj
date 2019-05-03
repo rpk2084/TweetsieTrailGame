@@ -57,6 +57,7 @@
     <Compile Include="TextPresenter.cs" />
     <Compile Include="TextViewModel.cs" />
     <Compile Include="TweetsieTrailGame.cs" />
+    <Compile Include="TweetsieGameController.cs" />
     <Compile Include="Weather.cs" />
     <Compile Include="GolfCart.cs" />
     <Compile Include="Program.cs" />
