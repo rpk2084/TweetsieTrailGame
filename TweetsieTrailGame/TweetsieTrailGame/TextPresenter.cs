@@ -78,6 +78,13 @@ namespace TweetsieTrailGame
             viewModel.Lines.Add("You do not have enough money for that. Please enter a valid number");
             viewer.displayText(viewModel);
         }
+        public void showIntError()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
+            viewModel.Lines.Add("Seems like that may not be a number. Try again");
+            viewer.displayText(viewModel);
+        }
 
         public void showStartMenuOptions()
         {

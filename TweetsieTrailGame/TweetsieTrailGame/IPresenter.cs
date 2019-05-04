@@ -19,5 +19,7 @@ namespace TweetsieTrailGame
         void showShopAxle();
         void showShopBattery();
         void showMoney();
+        void showMoneyError();
+        void showIntError();
     }
 }

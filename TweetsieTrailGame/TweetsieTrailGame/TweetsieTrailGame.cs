@@ -115,14 +115,38 @@ namespace TweetsieTrailGame
                 }
                 else
                 {
-                    uiPresenter.showErrorMessage();
+                    uiPresenter.showIntError();
                     return getOption(lower, upper);
                 }
             }
             catch (Exception ex)
             {
-                uiPresenter.showErrorMessage();
+                uiPresenter.showIntError();
                 return getOption(lower, upper);
+            }
+        }
+
+        private int getMoneyOption(int lower, int price)
+        {
+            try
+            {
+                int max = (Shopping.Money / price);
+                int option = Convert.ToInt32(uiInputController.getResponse());
+                if (option >= lower && option <= max)
+                {
+                    Shopping.Money = Shopping.Money - (price * option);
+                    return option;
+                }
+                else
+                {
+                    uiPresenter.showMoneyError();
+                    return getMoneyOption(lower, price);
+                }
+            }
+            catch (Exception ex)
+            {
+                uiPresenter.showIntError();
+                return getMoneyOption(lower, price);
             }
         }
 
@@ -169,18 +193,14 @@ namespace TweetsieTrailGame
         {
             uiPresenter.showMoney();
             uiPresenter.showShopWheel();
-            int wheelAmt = getOption(0, (Shopping.Money / 50));
+            int wheelAmt = getMoneyOption(0, 50);
             cart.Wheels = wheelAmt;
-            Shopping.Money = Shopping.Money - (wheelAmt * 50);
-            Console.WriteLine(Shopping.Money);
             uiPresenter.showShopAxle();
-            int axleAmt = getOption(0, (Shopping.Money / 100));
+            int axleAmt = getMoneyOption(0, 100);
             cart.Axles = axleAmt;
-            Shopping.Money = Shopping.Money - (axleAmt * 100);
             uiPresenter.showShopBattery();
-            int batteryAmt = getOption(0, (Shopping.Money / 20));
+            int batteryAmt = getMoneyOption(0, 20);
             cart.Batteries = batteryAmt;
-            Shopping.Money = Shopping.Money - (batteryAmt * 20);
             gameState = GAME_STATE.GAME_STATE_TRAVELLING;
         }
 
