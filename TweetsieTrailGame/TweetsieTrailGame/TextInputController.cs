@@ -14,14 +14,32 @@ namespace TweetsieTrailGame
             reader = inputReader;
         }
 
-        public void getStartMenuInput()
+        public String getResponse()
+        {
+            return reader.getLine();
+        }
+
+        public int getIntOption(int lower, int upper)
+        {
+            int option = reader.getInt();
+            if(option < lower || option > upper)
+            {
+                throw new TweetsieInputException("Input is not between " + lower + " and " + upper);
+            }
+            else
+            {
+                return option;
+            }
+        }
+
+        public void getOpeningScreenInput()
         {
             reader.waitForKeyPress();
         }
 
-        public String getResponse()
+        public int getMainMenuInput()
         {
-            return reader.getLine();
+            return getIntOption(1, 3);
         }
     }
 }

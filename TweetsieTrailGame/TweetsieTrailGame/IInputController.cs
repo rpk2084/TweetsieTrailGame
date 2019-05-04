@@ -7,7 +7,9 @@ namespace TweetsieTrailGame
 {
     interface IInputController
     {
-        void getStartMenuInput();
+        void getOpeningScreenInput();
         String getResponse();
+        int getIntOption(int lower, int upper);
+        int getMainMenuInput();
     }
 }

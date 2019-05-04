@@ -8,166 +8,37 @@ namespace TweetsieTrailGame
 
     class TweetsieTrailGame
     {
-        //Declare Presenter, File formatter, etc.
-        private IPresenter uiPresenter;
-        private IInputController uiInputController;
+        private GolfCart cart;
+        private Days day;
 
-        //Declare entities
-        private GAME_STATE gameState;
-
-        //The constructor is the only part of this class that should be public
-        public TweetsieTrailGame(IPresenter presenter, IInputController controller)
+        public TweetsieTrailGame()
         {
-            //Assign presenter, file formatter, etc.
-            uiPresenter = presenter;
-            uiInputController = controller;
-
-            //Get basic info for player creation
-            
-            //Hunter player = new Hunter(100, 20, name);
-
-            //Initialize entities
-            GolfCart cart = new GolfCart();
-            Days day = new Days();
-            
-            
-
-            //start the main loop
-            gameState = GAME_STATE.GAME_STATE_START_MENU;
-            mainLoop();
+            cart = new GolfCart();
+            day = new Days();
         }
 
-        public void mainLoop()
+        public GolfCart Cart
         {
-            while(gameState != GAME_STATE.GAME_STATE_QUIT)
+            get
             {
-                switch (gameState)
-                {
-                    case GAME_STATE.GAME_STATE_STARTING_INFO:
-                        startInfo();
-                        break;
-
-                    case GAME_STATE.GAME_STATE_START_MENU:
-                        startMenu();
-                        break;
-
-                    case GAME_STATE.GAME_STATE_SCORES:
-                        scoreBoard();
-                        break;
-
-                    case GAME_STATE.GAME_STATE_SHOPPING:
-                        shopMenu();
-                        break;
-
-                    case GAME_STATE.GAME_STATE_TRAVELLING:
-                        travelLoop();
-                        break;
-                }
+                return cart;
             }
-            exitMessage();
-        }
-
-        private void startMenu()
-        {
-            uiPresenter.showOpeningScreen();
-            uiInputController.getStartMenuInput();
-            uiPresenter.showStartMenuOptions();
-            int option = getOption(1, 2);
-            if (option == 1)
+            set
             {
-                gameState = GAME_STATE.GAME_STATE_STARTING_INFO;
-            }
-            else if (option == 2)
-            {
-                gameState = GAME_STATE.GAME_STATE_SCORES;
-            }
-            else if (option == 3)
-            {
-                gameState = GAME_STATE.GAME_STATE_QUIT;
-            }
-            //gameState = GAME_STATE.GAME_STATE_QUIT;
-        }
-
-        private void startInfo()
-        {
-            HunterJobInfo player = createPlayer();
-            gameState = GAME_STATE.GAME_STATE_SHOPPING;
-        }
-
-        private int getOption(int lower, int upper)
-        {
-            try
-            {
-                int option = Convert.ToInt32(uiInputController.getResponse());
-                if (option >= lower && option <= upper)
-                {
-                    return option;
-                }
-                else
-                {
-                    uiPresenter.showErrorMessage();
-                    return getOption(lower, upper);
-                }
-            }
-            catch (Exception ex)
-            {
-                uiPresenter.showErrorMessage();
-                return getOption(lower, upper);
+                cart = value;
             }
         }
 
-        private HunterJobInfo createPlayer()
+        public Days Day
         {
-            String name = getPlayerName();
-            int jobChoice = getPlayerJob();
-            //Because any errors should be handled in the methods already called, let else have the last case to satisfy the return value
-            if (jobChoice == 1)
+            get
             {
-                HunterJobInfo player = new HunterJobInfo(name, 100, 15, 1.2, 700);
-                return player;
+                return day;
             }
-            else
+            set
             {
-                HunterJobInfo player = new HunterJobInfo(name, 100, 25, 1.2, 500);
-                return player;
+                day = value;
             }
-            
-        }
-
-        private String getPlayerName()
-        {
-            uiPresenter.showNameRequest();
-            String name = uiInputController.getResponse();
-            return name;
-        }
-
-        private int getPlayerJob()
-        {
-            uiPresenter.showDecideJob();
-            int job = getOption(1, 2);
-            return job;
-        }
-        private void scoreBoard()
-        {
-            uiPresenter.showScores();
-            uiPresenter.showContinue();
-            uiInputController.getStartMenuInput();
-            gameState = GAME_STATE.GAME_STATE_START_MENU;
-        }
-
-        private void shopMenu()
-        {
-
-        }
-
-        private void travelLoop()
-        {
-
-        }
-
-        private void exitMessage()
-        {
-            uiPresenter.showExitMessage();
         }
     }
 }

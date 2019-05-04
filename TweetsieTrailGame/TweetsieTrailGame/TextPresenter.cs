@@ -72,7 +72,7 @@ namespace TweetsieTrailGame
             viewer.displayText(viewModel);
         }
 
-        public void showStartMenuOptions()
+        public void showMainMenuOptions()
         {
             TextViewModel viewModel = new TextViewModel();
             viewModel.Lines.Add("");

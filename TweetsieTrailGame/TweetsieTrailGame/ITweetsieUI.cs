@@ -5,10 +5,8 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
-    interface ITextInputReader
+    interface ITweetsieUI
     {
-        void waitForKeyPress();
-        String getLine();
-        int getInt();
+        GAME_STATE mainMenu();
     }
 }

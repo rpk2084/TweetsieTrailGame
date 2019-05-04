@@ -5,10 +5,8 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
-    interface ITextInputReader
+    class TweetsieInputException: Exception
     {
-        void waitForKeyPress();
-        String getLine();
-        int getInt();
+        public TweetsieInputException(string message) : base(message) { }
     }
 }

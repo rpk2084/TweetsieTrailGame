@@ -48,6 +48,8 @@
     <Compile Include="Hunter.cs" />
     <Compile Include="HunterJobInfo.cs" />
     <Compile Include="IInputController.cs" />
+    <Compile Include="ITweetsieUI.cs" />
+    <Compile Include="TweetsieInputException.cs" />
     <Compile Include="IPresenter.cs" />
     <Compile Include="ITextInputReader.cs" />
     <Compile Include="ITextViewer.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="TextInputController.cs" />
     <Compile Include="TextPresenter.cs" />
     <Compile Include="TextViewModel.cs" />
+    <Compile Include="TweetsieUI.cs" />
     <Compile Include="TweetsieTrailGame.cs" />
     <Compile Include="TweetsieGameController.cs" />
     <Compile Include="Weather.cs" />

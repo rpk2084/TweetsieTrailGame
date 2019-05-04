@@ -7,7 +7,7 @@ namespace TweetsieTrailGame
 {
     enum GAME_STATE
     {
-        GAME_STATE_START_MENU,
+        GAME_STATE_MAIN_MENU,
         GAME_STATE_TRAVELLING,
         GAME_STATE_SHOPPING,
         GAME_STATE_SCORES,
@@ -18,22 +18,24 @@ namespace TweetsieTrailGame
     class TweetsieGameController
     {
         //Declare Presenter, File formatter, etc.
-        private IPresenter uiPresenter;
-        private IInputController uiInputController;
+        //private IPresenter uiPresenter;
+        //private IInputController uiInputController;
+        private ITweetsieUI ui;
 
         //Declare entities
         private GAME_STATE gameState;
         private TweetsieTrailGame game;
 
         //The constructor is the only part of this class that should be public
-        public TweetsieGameController(IPresenter presenter, IInputController controller)
+        public TweetsieGameController(ITweetsieUI tweetsieUI)
         {
             //Assign presenter, file formatter, etc.
-            uiPresenter = presenter;
-            uiInputController = controller;
+            //uiPresenter = presenter;
+            //uiInputController = controller;
+            ui = tweetsieUI;
 
             //start the main loop
-            gameState = GAME_STATE.GAME_STATE_START_MENU;
+            gameState = GAME_STATE.GAME_STATE_MAIN_MENU;
             mainLoop();
         }
 
@@ -44,11 +46,11 @@ namespace TweetsieTrailGame
                 switch (gameState)
                 {
                     case GAME_STATE.GAME_STATE_STARTING_INFO:
-                        startInfo();
+                        //startInfo();
                         break;
 
-                    case GAME_STATE.GAME_STATE_START_MENU:
-                        startMenu();
+                    case GAME_STATE.GAME_STATE_MAIN_MENU:
+                        openingMenu();
                         break;
 
                     case GAME_STATE.GAME_STATE_SCORES:
@@ -67,92 +69,55 @@ namespace TweetsieTrailGame
             exitMessage();
         }
 
-        private void startMenu()
+        private void openingMenu()
         {
-            uiPresenter.showOpeningScreen();
-            uiInputController.getStartMenuInput();
-            uiPresenter.showStartMenuOptions();
-            int option = getOption(1, 2);
-            if (option == 1)
-            {
-                gameState = GAME_STATE.GAME_STATE_STARTING_INFO;
-            }
-            else if (option == 2)
-            {
-                gameState = GAME_STATE.GAME_STATE_SCORES;
-            }
-            else if (option == 3)
-            {
-                gameState = GAME_STATE.GAME_STATE_QUIT;
-            }
-            //gameState = GAME_STATE.GAME_STATE_QUIT;
+            this.gameState = ui.mainMenu();
         }
 
-        private void startInfo()
-        {
-            HunterJobInfo player = createPlayer();
-            gameState = GAME_STATE.GAME_STATE_SHOPPING;
-        }
+        //private void startInfo()
+        //{
+        //    HunterJobInfo player = createPlayer();
+        //    gameState = GAME_STATE.GAME_STATE_SHOPPING;
+        //}
 
-        private int getOption(int lower, int upper)
-        {
-            try
-            {
-                int option = Convert.ToInt32(uiInputController.getResponse());
-                if (option >= lower && option <= upper)
-                {
-                    return option;
-                }
-                else
-                {
-                    uiPresenter.showErrorMessage();
-                    return getOption(lower, upper);
-                }
-            }
-            catch (Exception ex)
-            {
-                uiPresenter.showErrorMessage();
-                return getOption(lower, upper);
-            }
-        }
+        //private HunterJobInfo createPlayer()
+        //{
+        //    String name = getPlayerName();
+        //    int jobChoice = getPlayerJob();
+        //    //Because any errors should be handled in the methods already called, let else have the last case to satisfy the return value
+        //    if (jobChoice == 1)
+        //    {
+        //        HunterJobInfo player = new HunterJobInfo(name, 100, 15, 1.2, 700);
+        //        return player;
+        //    }
+        //    else
+        //    {
+        //        HunterJobInfo player = new HunterJobInfo(name, 100, 25, 1.2, 500);
+        //        return player;
+        //    }
 
-        private HunterJobInfo createPlayer()
-        {
-            String name = getPlayerName();
-            int jobChoice = getPlayerJob();
-            //Because any errors should be handled in the methods already called, let else have the last case to satisfy the return value
-            if (jobChoice == 1)
-            {
-                HunterJobInfo player = new HunterJobInfo(name, 100, 15, 1.2, 700);
-                return player;
-            }
-            else
-            {
-                HunterJobInfo player = new HunterJobInfo(name, 100, 25, 1.2, 500);
-                return player;
-            }
+        //}
 
-        }
+        //private String getPlayerName()
+        //{
+        //    //uiPresenter.showNameRequest();
+        //    //String name = uiInputController.getResponse();
+        //    return name;
+        //}
 
-        private String getPlayerName()
-        {
-            uiPresenter.showNameRequest();
-            String name = uiInputController.getResponse();
-            return name;
-        }
+        //private int getPlayerJob()
+        //{
+        //    //uiPresenter.showDecideJob();
+        //    //int job = uiInputController.getIntOption(1, 2);
+        //    return job;
+        //}
 
-        private int getPlayerJob()
-        {
-            uiPresenter.showDecideJob();
-            int job = getOption(1, 2);
-            return job;
-        }
         private void scoreBoard()
         {
-            uiPresenter.showScores();
-            uiPresenter.showContinue();
-            uiInputController.getStartMenuInput();
-            gameState = GAME_STATE.GAME_STATE_START_MENU;
+            //uiPresenter.showScores();
+            //uiPresenter.showContinue();
+            //uiInputController.getStartMenuInput();
+            gameState = GAME_STATE.GAME_STATE_MAIN_MENU;
         }
 
         private void shopMenu()
@@ -167,7 +132,7 @@ namespace TweetsieTrailGame
 
         private void exitMessage()
         {
-            uiPresenter.showExitMessage();
+            //uiPresenter.showExitMessage();
         }
     }
 }
