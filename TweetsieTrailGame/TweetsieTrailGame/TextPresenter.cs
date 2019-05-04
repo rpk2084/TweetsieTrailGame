@@ -71,6 +71,13 @@ namespace TweetsieTrailGame
             viewModel.Lines.Add("Something went wrong. Let's try that again.");
             viewer.displayText(viewModel);
         }
+        public void showMoneyError()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
+            viewModel.Lines.Add("You do not have enough money for that. Please enter a valid number");
+            viewer.displayText(viewModel);
+        }
 
         public void showStartMenuOptions()
         {
@@ -88,6 +95,27 @@ namespace TweetsieTrailGame
             viewModel.Lines.Add("");
             viewModel.Lines.Add("Each wheel is $50. How many would you like to buy?");
             */
+        }
+        public void showShopWheel()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
+            viewModel.Lines.Add("Wheels cost $50. How many would you like to buy?");
+            viewer.displayText(viewModel);
+        }
+        public void showShopAxle()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
+            viewModel.Lines.Add("Axles cost $100. How many would you like to buy?");
+            viewer.displayText(viewModel);
+        }
+        public void showShopBattery()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
+            viewModel.Lines.Add("Batteries cost $20. How many would you like to buy?");
+            viewer.displayText(viewModel);
         }
         public void showScores()
         {

@@ -21,6 +21,14 @@ namespace TweetsieTrailGame
             this.scoreMultiplier = scoreMultiplier;
             this.startingMoney = startingMoney;
         }
+        public HunterJobInfo()
+        {
+            this.name = null;
+            this.health = 0;
+            this.strength = 0;
+            this.scoreMultiplier = 0;
+            this.startingMoney = 0;
+        }
 
         public string Name
         {
@@ -39,6 +47,18 @@ namespace TweetsieTrailGame
             get
             {
                 return this.Health;
+            }
+        }
+
+        public int Money
+        {
+            get
+            {
+                return this.startingMoney;
+            }
+            set
+            {
+                this.startingMoney = value;
             }
         }
     }

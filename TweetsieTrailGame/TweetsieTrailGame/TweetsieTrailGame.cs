@@ -15,11 +15,17 @@ namespace TweetsieTrailGame
         GAME_STATE_STARTING_INFO
     };
 
+
     class TweetsieTrailGame
     {
         //Declare Presenter, File formatter, etc.
         private IPresenter uiPresenter;
         private IInputController uiInputController;
+
+        //Create Accessible objects
+        HunterJobInfo player = null;
+        GolfCart cart = new GolfCart();
+        Days day = new Days();
 
         //Declare entities
         private GAME_STATE gameState;
@@ -31,13 +37,8 @@ namespace TweetsieTrailGame
             uiPresenter = presenter;
             uiInputController = controller;
 
-            //Get basic info for player creation
-            
-            //Hunter player = new Hunter(100, 20, name);
-
             //Initialize entities
-            GolfCart cart = new GolfCart();
-            Days day = new Days();
+            
             
             
 
@@ -99,7 +100,7 @@ namespace TweetsieTrailGame
 
         private void startInfo()
         {
-            HunterJobInfo player = createPlayer();
+            player = createPlayer();
             gameState = GAME_STATE.GAME_STATE_SHOPPING;
         }
 
@@ -166,7 +167,13 @@ namespace TweetsieTrailGame
 
         private void shopMenu()
         {
-
+            uiPresenter.showMoney();
+            uiPresenter.showShopWheel();
+            cart.Wheels = getOption(0, (player.Money / 50));
+            uiPresenter.showShopAxle();
+            cart.Axles = getOption(0, (player.Money / 100));
+            uiPresenter.showShopBattery();
+            cart.Batteries = getOption(0, (player.Money / 20));
         }
 
         private void travelLoop()

@@ -15,5 +15,9 @@ namespace TweetsieTrailGame
         void showStartMenuOptions();
         void showContinue();
         void showScores();
+        void showShopWheel();
+        void showShopAxle();
+        void showShopBattery();
+        void showMoney();
     }
 }
