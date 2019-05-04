@@ -86,6 +86,21 @@ namespace TweetsieTrailGame
             viewer.displayText(viewModel);
         }
 
+        public void showStopTravel()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
+            viewModel.Lines.Add("Press a key to rest");
+            viewer.displayText(viewModel);
+        }
+        public void showCurrentDay()
+        {
+            TextViewModel viewModel = new TextViewModel();
+            viewModel.Lines.Add("");
+            viewModel.Lines.Add("Day " + Convert.ToString(Days.Day));
+            viewer.displayText(viewModel);
+        }
+
         public void showStartMenuOptions()
         {
             TextViewModel viewModel = new TextViewModel();

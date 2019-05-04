@@ -21,5 +21,7 @@ namespace TweetsieTrailGame
         void showMoney();
         void showMoneyError();
         void showIntError();
+        void showStopTravel();
+        void showCurrentDay();
     }
 }

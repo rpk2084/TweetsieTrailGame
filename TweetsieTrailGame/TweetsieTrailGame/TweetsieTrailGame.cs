@@ -25,7 +25,6 @@ namespace TweetsieTrailGame
         //Create Accessible objects
         HunterJobInfo player = null;
         GolfCart cart = new GolfCart();
-        Days day = new Days();
 
         //Declare entities
         private GAME_STATE gameState;
@@ -206,6 +205,13 @@ namespace TweetsieTrailGame
 
         private void travelLoop()
         {
+            uiPresenter.showStopTravel();
+            while (uiInputController.loopKey() == false)
+            {
+                Days.continueTravel();
+                uiPresenter.showCurrentDay();
+            }
+            gameState = GAME_STATE.GAME_STATE_QUIT;
 
         }
 

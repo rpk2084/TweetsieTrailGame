@@ -14,6 +14,11 @@ namespace TweetsieTrailGame
             Console.ReadKey(true);
         }
 
+        public bool loopUntilKeyPress()
+        {
+            return Console.KeyAvailable;
+        }
+
         public String getLine()
         {
             return Console.ReadLine();

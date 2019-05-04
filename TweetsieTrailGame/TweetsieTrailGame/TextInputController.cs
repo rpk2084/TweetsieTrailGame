@@ -23,5 +23,10 @@ namespace TweetsieTrailGame
         {
             return reader.getLine();
         }
+
+        public bool loopKey()
+        {
+            return reader.loopUntilKeyPress();
+        }
     }
 }

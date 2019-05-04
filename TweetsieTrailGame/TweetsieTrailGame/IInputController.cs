@@ -9,5 +9,6 @@ namespace TweetsieTrailGame
     {
         void getStartMenuInput();
         String getResponse();
+        bool loopKey();
     }
 }
