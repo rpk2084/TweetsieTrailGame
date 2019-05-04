@@ -95,12 +95,12 @@ namespace TweetsieTrailGame
             {
                 gameState = GAME_STATE.GAME_STATE_QUIT;
             }
-            //gameState = GAME_STATE.GAME_STATE_QUIT;
         }
 
         private void startInfo()
         {
             player = createPlayer();
+            Shopping.Money = player.Money;
             gameState = GAME_STATE.GAME_STATE_SHOPPING;
         }
 
@@ -174,6 +174,7 @@ namespace TweetsieTrailGame
             cart.Axles = getOption(0, (player.Money / 100));
             uiPresenter.showShopBattery();
             cart.Batteries = getOption(0, (player.Money / 20));
+            gameState = GAME_STATE.GAME_STATE_TRAVELLING;
         }
 
         private void travelLoop()
