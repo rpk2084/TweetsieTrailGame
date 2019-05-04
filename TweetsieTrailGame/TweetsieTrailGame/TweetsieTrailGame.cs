@@ -82,7 +82,7 @@ namespace TweetsieTrailGame
             uiPresenter.showOpeningScreen();
             uiInputController.getStartMenuInput();
             uiPresenter.showStartMenuOptions();
-            int option = getOption(1, 2);
+            int option = getOption(1, 3);
             if (option == 1)
             {
                 gameState = GAME_STATE.GAME_STATE_STARTING_INFO;
