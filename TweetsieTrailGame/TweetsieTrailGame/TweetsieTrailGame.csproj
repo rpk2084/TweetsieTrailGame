@@ -42,23 +42,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combatant.cs" />
-    <Compile Include="ConsoleInputReader.cs" />
-    <Compile Include="ConsoleTextViewer.cs" />
+    <Compile Include="UI\ConsoleInputReader.cs" />
+    <Compile Include="UI\ConsoleTextViewer.cs" />
     <Compile Include="Days.cs" />
     <Compile Include="Hunter.cs" />
     <Compile Include="HunterJobInfo.cs" />
-    <Compile Include="IInputController.cs" />
-    <Compile Include="ITweetsieUI.cs" />
-    <Compile Include="TweetsieInputException.cs" />
-    <Compile Include="IPresenter.cs" />
-    <Compile Include="ITextInputReader.cs" />
-    <Compile Include="ITextViewer.cs" />
+    <Compile Include="UI\IInputController.cs" />
+    <Compile Include="UI\ITweetsieUI.cs" />
+    <Compile Include="UI\TweetsieInputException.cs" />
+    <Compile Include="UI\IPresenter.cs" />
+    <Compile Include="UI\ITextInputReader.cs" />
+    <Compile Include="UI\ITextViewer.cs" />
     <Compile Include="ScoreTable.cs" />
     <Compile Include="Shopping.cs" />
-    <Compile Include="TextInputController.cs" />
-    <Compile Include="TextPresenter.cs" />
-    <Compile Include="TextViewModel.cs" />
-    <Compile Include="TweetsieUI.cs" />
+    <Compile Include="UI\TextInputController.cs" />
+    <Compile Include="UI\TextPresenter.cs" />
+    <Compile Include="UI\TextViewModel.cs" />
+    <Compile Include="UI\TweetsieUI.cs" />
     <Compile Include="TweetsieTrailGame.cs" />
     <Compile Include="TweetsieGameController.cs" />
     <Compile Include="Weather.cs" />
