@@ -169,11 +169,18 @@ namespace TweetsieTrailGame
         {
             uiPresenter.showMoney();
             uiPresenter.showShopWheel();
-            cart.Wheels = getOption(0, (player.Money / 50));
+            int wheelAmt = getOption(0, (Shopping.Money / 50));
+            cart.Wheels = wheelAmt;
+            Shopping.Money = Shopping.Money - (wheelAmt * 50);
+            Console.WriteLine(Shopping.Money);
             uiPresenter.showShopAxle();
-            cart.Axles = getOption(0, (player.Money / 100));
+            int axleAmt = getOption(0, (Shopping.Money / 100));
+            cart.Axles = axleAmt;
+            Shopping.Money = Shopping.Money - (axleAmt * 100);
             uiPresenter.showShopBattery();
-            cart.Batteries = getOption(0, (player.Money / 20));
+            int batteryAmt = getOption(0, (Shopping.Money / 20));
+            cart.Batteries = batteryAmt;
+            Shopping.Money = Shopping.Money - (batteryAmt * 20);
             gameState = GAME_STATE.GAME_STATE_TRAVELLING;
         }
 
