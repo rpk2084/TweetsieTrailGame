@@ -8,5 +8,6 @@ namespace TweetsieTrailGame
     interface ITweetsieUI
     {
         GAME_STATE mainMenu();
+        void playerCreationMenu(int playerNum, List<HunterJobInfo> jobInfoList, out string name, out HunterJobInfo jobChoice);
     }
 }

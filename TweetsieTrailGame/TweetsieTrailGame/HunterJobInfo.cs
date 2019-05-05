@@ -38,8 +38,35 @@ namespace TweetsieTrailGame
         {
             get
             {
-                return this.Health;
+                return health;
             }
         }
+
+        public int Strength
+        {
+            get
+            {
+                return this.strength;
+            }
+        }
+
+        public int StartingMoney
+        {
+            get
+            {
+                return startingMoney;
+            }
+        }
+
+        public double ScoreMultiplier
+        {
+            get
+            {
+                return scoreMultiplier;
+            }
+        }
+
     }
+
+    
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
-    class TextInputController : IInputController
+    class TextInputController : ITextInputController
     {
         private ITextInputReader reader;
 
@@ -14,7 +14,7 @@ namespace TweetsieTrailGame
             reader = inputReader;
         }
 
-        public String getResponse()
+        public String getStringInput()
         {
             return reader.getLine();
         }
@@ -32,14 +32,9 @@ namespace TweetsieTrailGame
             }
         }
 
-        public void getOpeningScreenInput()
+        public void waitForKeyPress()
         {
             reader.waitForKeyPress();
-        }
-
-        public int getMainMenuInput()
-        {
-            return getIntOption(1, 3);
         }
     }
 }

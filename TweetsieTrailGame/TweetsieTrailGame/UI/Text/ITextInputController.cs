@@ -5,11 +5,10 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
-    interface IInputController
+    interface ITextInputController
     {
-        void getOpeningScreenInput();
-        String getResponse();
+        void waitForKeyPress();
+        String getStringInput();
         int getIntOption(int lower, int upper);
-        int getMainMenuInput();
     }
 }

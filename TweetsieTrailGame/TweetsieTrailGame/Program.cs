@@ -17,7 +17,7 @@ namespace TweetsieTrailGame
 
             TweetsieUI ui = new TweetsieUI(presenter, controller);
 
-            TweetsieGameController game = new TweetsieGameController(ui);
+            TweetsieGameController game = new TweetsieGameController(ui, 3);
 
             ////Create golf cart object so starting materials can be applied
             //GolfCart cart = new GolfCart();

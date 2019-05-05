@@ -27,12 +27,10 @@ namespace TweetsieTrailGame
         private TweetsieTrailGame game;
 
         //The constructor is the only part of this class that should be public
-        public TweetsieGameController(ITweetsieUI tweetsieUI)
+        public TweetsieGameController(ITweetsieUI tweetsieUI, int playerCount)
         {
-            //Assign presenter, file formatter, etc.
-            //uiPresenter = presenter;
-            //uiInputController = controller;
             ui = tweetsieUI;
+            game = new TweetsieTrailGame(playerCount);
 
             //start the main loop
             gameState = GAME_STATE.GAME_STATE_MAIN_MENU;
@@ -46,7 +44,7 @@ namespace TweetsieTrailGame
                 switch (gameState)
                 {
                     case GAME_STATE.GAME_STATE_STARTING_INFO:
-                        //startInfo();
+                        startInfo();
                         break;
 
                     case GAME_STATE.GAME_STATE_MAIN_MENU:
@@ -74,11 +72,23 @@ namespace TweetsieTrailGame
             this.gameState = ui.mainMenu();
         }
 
-        //private void startInfo()
-        //{
-        //    HunterJobInfo player = createPlayer();
-        //    gameState = GAME_STATE.GAME_STATE_SHOPPING;
-        //}
+        private void startInfo()
+        {
+            //replace this section with a file later
+            List<HunterJobInfo> hunterJobList = new List<HunterJobInfo>();
+            hunterJobList.Add(new HunterJobInfo("Banker", 100, 15, 1.2, 100));
+            hunterJobList.Add(new HunterJobInfo("Fighter", 100, 20, 1.2, 50));
+            //end of section that should be replaced with a file
+
+            for (int i = 0; i < game.PlayerCount; ++i)
+            {
+                string playerName;
+                HunterJobInfo jobChoice;
+                ui.playerCreationMenu(i, hunterJobList, out playerName, out jobChoice);
+                game.addHunter(playerName, jobChoice);
+            }
+            gameState = GAME_STATE.GAME_STATE_SHOPPING;
+        }
 
         //private HunterJobInfo createPlayer()
         //{
