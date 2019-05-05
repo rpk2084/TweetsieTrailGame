@@ -41,9 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combatant.cs" />
+    <Compile Include="ConsoleInputReader.cs" />
+    <Compile Include="ConsoleTextViewer.cs" />
     <Compile Include="Days.cs" />
+    <Compile Include="Hunter.cs" />
+    <Compile Include="HunterJobInfo.cs" />
+    <Compile Include="IInputController.cs" />
+    <Compile Include="IPresenter.cs" />
+    <Compile Include="ITextInputReader.cs" />
+    <Compile Include="ITextViewer.cs" />
     <Compile Include="ScoreTable.cs" />
     <Compile Include="Shopping.cs" />
+    <Compile Include="TextInputController.cs" />
+    <Compile Include="TextPresenter.cs" />
+    <Compile Include="TextViewModel.cs" />
+    <Compile Include="TweetsieTrailGame.cs" />
     <Compile Include="Weather.cs" />
     <Compile Include="GolfCart.cs" />
     <Compile Include="Program.cs" />
