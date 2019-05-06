@@ -19,6 +19,7 @@ namespace TweetsieTrailGame
             playerCount = numPlayers;
             hunters = new List<Hunter>();
             cart = new GolfCart();
+            day = new Days();
         }
 
         public GolfCart Cart

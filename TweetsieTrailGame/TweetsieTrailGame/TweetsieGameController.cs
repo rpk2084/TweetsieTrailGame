@@ -138,7 +138,8 @@ namespace TweetsieTrailGame
 
         private void travelLoop()
         {
-
+            ui.continueTravel(game.Day);
+            gameState = GAME_STATE.GAME_STATE_QUIT;
         }
 
         private void exitMessage()

@@ -7,59 +7,59 @@ namespace TweetsieTrailGame
 {
     class Days
     {
-        public static int day;
-        public static int distance;
-        public static int pace;
-        public const int totalDistance = 400;
-        /*public Days()
+        private int day;
+        private int distance;
+        private int pace;
+        private int totalDistance = 400;
+        public Days()
         {
             day = 0;
             distance = 0;
             pace = 1;
-        }*/
+        }
 
-        public static int Day
+        public int Day
         {
             get
             {
-                return day;
+                return this.day;
             }
             set
             {
-                day = value;
+                this.day = value;
             }
         }
 
-        public static int Distance
+        public int Distance
         {
             get
             {
-                return distance;
+                return this.distance;
             }
             set
             {
-                distance = value;
+                this.distance = value;
             }
         }
 
-        public static int Pace
+        public int Pace
         {
             get
             {
-                return pace;
+                return this.pace;
             }
             set
             {
-                pace = value;
+                this.pace = value;
             }
         }
 
-        public static void addDay()
+        public void addDay()
         {
             Day++;
         }
 
-        public static void changePace(Days dayCycle)
+        public void changePace(Days dayCycle)
         {
             Console.WriteLine("Enter numbers 1-4 to set the pace accordingly. 1 being the slowest and 4 being the fastest");
             int setPace = Convert.ToInt32(Console.ReadLine());
@@ -84,7 +84,7 @@ namespace TweetsieTrailGame
             }
         }
 
-        public static void calculateDailyDistance()
+        public void calculateDailyDistance()
         {
             switch (Pace)
             {
@@ -103,7 +103,7 @@ namespace TweetsieTrailGame
             }
         }
 
-        public static void continueTravel()
+        public void continueTravel()
         {
             addDay();
             calculateDailyDistance();

@@ -161,5 +161,30 @@ namespace TweetsieTrailGame
                 }
             }
         }
+
+        public void changePace(Days day)
+        {
+            TextUIModel changePace = new TextUIModel();
+            changePace.Header.Add("Which would you like to buy?");
+            changePace.Options.Add("Freaky Fast");
+            changePace.Options.Add("Dominoes Fast");
+            changePace.Options.Add("Pizza Hut Fast");
+            changePace.Options.Add("SnailMail Fast");
+            changePace.InputPrompt = "Enter your choice>>";
+            int option = getPlayerOption(changePace);
+            day.Pace = option;
+        }
+
+        public void continueTravel(Days day)
+        {
+            while (inputController.loopUntilKeypress() == false)
+            {
+                TextUIModel continueTravel = new TextUIModel();
+                continueTravel.Header.Add("Day: " + day.Day);
+                continueTravel.Header.Add("Weather: " + Weather.getWeather());
+                presenter.showTextUIModel(continueTravel);
+                day.continueTravel();
+            }
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace TweetsieTrailGame
         GAME_STATE mainMenu();
         void playerCreationMenu(int playerNum, List<HunterJobInfo> jobInfoList, out string name, out HunterJobInfo jobChoice);
         void shoppingMenu(GolfCart cart);
+        void changePace(Days day);
+        void continueTravel(Days day);
     }
 }

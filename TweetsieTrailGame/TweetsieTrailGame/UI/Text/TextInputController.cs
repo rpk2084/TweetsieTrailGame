@@ -46,6 +46,11 @@ namespace TweetsieTrailGame
             }
         }
 
+        public bool loopUntilKeypress()
+        {
+            return reader.loopUntilKeyPress();
+        }
+
         public void waitForKeyPress()
         {
             reader.waitForKeyPress();
