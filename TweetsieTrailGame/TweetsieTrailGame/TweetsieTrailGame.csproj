@@ -55,7 +55,6 @@
     <Compile Include="UI\Text\ITextInputReader.cs" />
     <Compile Include="UI\Text\ITextViewer.cs" />
     <Compile Include="ScoreTable.cs" />
-    <Compile Include="Shopping.cs" />
     <Compile Include="UI\Text\TextInputController.cs" />
     <Compile Include="UI\Text\TextPresenter.cs" />
     <Compile Include="UI\Text\TextViewModel.cs" />

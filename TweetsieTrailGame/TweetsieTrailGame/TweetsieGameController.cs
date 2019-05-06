@@ -132,7 +132,8 @@ namespace TweetsieTrailGame
 
         private void shopMenu()
         {
-
+            ui.shoppingMenu(game.Cart);
+            gameState = GAME_STATE.GAME_STATE_TRAVELLING;
         }
 
         private void travelLoop()

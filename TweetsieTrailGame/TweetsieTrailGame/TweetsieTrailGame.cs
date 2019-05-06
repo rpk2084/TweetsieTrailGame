@@ -12,13 +12,13 @@ namespace TweetsieTrailGame
         private Days day;
         private int playerCount;
         private List<Hunter> hunters;
-        private int money;
 
 
         public TweetsieTrailGame(int numPlayers)
         {
             playerCount = numPlayers;
             hunters = new List<Hunter>();
+            cart = new GolfCart();
         }
 
         public GolfCart Cart
@@ -68,6 +68,7 @@ namespace TweetsieTrailGame
         public void addHunter(string name, HunterJobInfo jobInfo)
         {
             hunters.Add(new Hunter(jobInfo.Health, jobInfo.Strength, name, jobInfo.ScoreMultiplier));
+            cart.Money += jobInfo.StartingMoney;
         }
     }
 }

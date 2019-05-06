@@ -86,5 +86,80 @@ namespace TweetsieTrailGame
             }
             return option;
         }
+
+        public int getMoneyOption(TextUIModel uiModel, GolfCart cart, int price)
+        {
+            int option;
+            while (true)
+            {
+                presenter.showTextUIModel(uiModel);
+                try
+                {
+                    int max = (cart.Money / price);
+                    option = inputController.getPriceOption(0, cart, price);
+                    break;
+                }
+                catch (TweetsieInputException e)
+                {
+                    continue;
+                }
+            }
+            return option;
+        }
+
+        public void shoppingMenu(GolfCart cart)
+        {
+            int wheelsPurchased = 0;
+            int axlesPurchased = 0;
+            int batteriesPurchased = 0;
+            int wheelPrice = 50;
+            int axlePrice = 100;
+            int batteryPrice = 20;
+            bool exit = true;
+
+            while (exit)
+            {
+                TextUIModel shoppingMainMenu = new TextUIModel();
+                shoppingMainMenu.Header.Add("Which would you like to buy?");
+                shoppingMainMenu.Options.Add("Wheels");
+                shoppingMainMenu.Options.Add("Axles");
+                shoppingMainMenu.Options.Add("Batteries");
+                shoppingMainMenu.Options.Add("Exit");
+                shoppingMainMenu.InputPrompt = "Enter your choice>>";
+                presenter.showTextUIModel(shoppingMainMenu);
+                int option = getPlayerOption(shoppingMainMenu);
+
+                TextUIModel shoppingSubMenu = new TextUIModel();
+                shoppingSubMenu.InputPrompt = "How many do you want to buy? >>";
+
+                switch (option)
+                {
+                    case 1:
+                        shoppingSubMenu.Header.Add("You have " + cart.Wheels + " wheels and $" + cart.Money);
+                        shoppingSubMenu.Header.Add("Wheels cost $" + wheelPrice);
+                        wheelsPurchased = getMoneyOption(shoppingSubMenu, cart, wheelPrice);
+                        cart.Money -= wheelPrice * wheelsPurchased;
+                        cart.Wheels += wheelsPurchased;
+                        break;
+                    case 2:
+                        shoppingSubMenu.Header.Add("You have " + cart.Axles + " axles and $" + cart.Money);
+                        shoppingSubMenu.Header.Add("Axles cost $" + axlePrice);
+                        axlesPurchased = getMoneyOption(shoppingSubMenu, cart, axlePrice);
+                        cart.Money -= axlePrice * axlesPurchased;
+                        cart.Axles += axlesPurchased;
+                        break;
+                    case 3:
+                        shoppingSubMenu.Header.Add("You have " + cart.Batteries + " batteries and $" + cart.Money);
+                        shoppingSubMenu.Header.Add("Batteries cost $" + batteryPrice);
+                        batteriesPurchased = getMoneyOption(shoppingSubMenu, cart, batteryPrice);
+                        cart.Money -= batteryPrice * batteriesPurchased;
+                        cart.Batteries += batteriesPurchased;
+                        break;
+                    case 4:
+                        exit = false;
+                        break;
+                }
+            }
+        }
     }
 }
