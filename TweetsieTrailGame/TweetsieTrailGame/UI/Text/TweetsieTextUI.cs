@@ -179,6 +179,7 @@ namespace TweetsieTrailGame
         {
             while (inputController.loopUntilKeypress() == false)
             {
+                //Can weather just return a string like this???
                 TextUIModel continueTravel = new TextUIModel();
                 continueTravel.Header.Add("Day: " + day.Day);
                 continueTravel.Header.Add("Weather: " + Weather.getWeather());
