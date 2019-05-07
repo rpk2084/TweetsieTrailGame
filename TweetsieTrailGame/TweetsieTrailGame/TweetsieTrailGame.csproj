@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combatant.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="UI\Text\ConsoleInputReader.cs" />
     <Compile Include="UI\Text\ConsoleTextViewer.cs" />
     <Compile Include="Days.cs" />
