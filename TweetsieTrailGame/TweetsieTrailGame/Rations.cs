@@ -5,10 +5,10 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
-    interface ITextInputReader
+    enum RATIONS
     {
-        void waitForKeyPress();
-        bool loopUntilKeyPress();
-        String getLine();
+        MINIMAL = 1,
+        LIGHT = 2,
+        FILLING = 3
     }
 }

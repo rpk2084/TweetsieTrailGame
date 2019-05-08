@@ -7,18 +7,23 @@ namespace TweetsieTrailGame
 {
     class Hunter : Combatant
     {
-        private int scoreMultiplier;
-        public Hunter(int health, int strength, string name, int scoreMultiplier) : base(health, strength, name)
+        private double scoreMultiplier;
+        public Hunter(int health, int strength, string name, double scoreMultiplier) : base(health, strength, name)
         {
             this.scoreMultiplier = scoreMultiplier;
         }
 
-        public int ScoreMultiplier
+        public double ScoreMultiplier
         {
             get
             {
                 return this.scoreMultiplier;
             }
+        }
+
+        public void eat(RATIONS food)
+        {
+            Health += (int)food;
         }
     }
 }

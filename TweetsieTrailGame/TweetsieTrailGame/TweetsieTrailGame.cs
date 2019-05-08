@@ -5,219 +5,132 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
-    enum GAME_STATE
-    {
-        GAME_STATE_START_MENU,
-        GAME_STATE_TRAVELLING,
-        GAME_STATE_SHOPPING,
-        GAME_STATE_SCORES,
-        GAME_STATE_QUIT,
-        GAME_STATE_STARTING_INFO
-    };
-
 
     class TweetsieTrailGame
     {
-        //Declare Presenter, File formatter, etc.
-        private IPresenter uiPresenter;
-        private IInputController uiInputController;
+        private GolfCart cart;
+        private Days day;
+        private int playerCount;
+        private List<Hunter> hunters;
+        private RATIONS rations;
+        private PACE pace;
 
-        //Create Accessible objects
-        HunterJobInfo player = null;
-        GolfCart cart = new GolfCart();
 
-        //Declare entities
-        private GAME_STATE gameState;
-
-        //The constructor is the only part of this class that should be public
-        public TweetsieTrailGame(IPresenter presenter, IInputController controller)
+        public TweetsieTrailGame(int numPlayers)
         {
-            //Assign presenter, file formatter, etc.
-            uiPresenter = presenter;
-            uiInputController = controller;
-
-            //Initialize entities
-            
-            
-            
-
-            //start the main loop
-            gameState = GAME_STATE.GAME_STATE_START_MENU;
-            mainLoop();
+            playerCount = numPlayers;
+            hunters = new List<Hunter>();
+            cart = new GolfCart();
+            day = new Days();
+            rations = RATIONS.FILLING;
+            pace = PACE.SLOW;
         }
 
-        public void mainLoop()
+        public GolfCart Cart
         {
-            while(gameState != GAME_STATE.GAME_STATE_QUIT)
+            get
             {
-                switch (gameState)
+                return cart;
+            }
+            set
+            {
+                cart = value;
+            }
+        }
+
+        public Days Day
+        {
+            get
+            {
+                return day;
+            }
+            set
+            {
+                day = value;
+            }
+        }
+
+        public int PlayerCount
+        {
+            get
+            {
+                return playerCount;
+            }
+        }
+
+        public List<Hunter> Hunters
+        {
+            get
+            {
+                return hunters;
+            }
+            set
+            {
+                hunters = value;
+            }
+        }
+
+        public void addHunter(string name, HunterJobInfo jobInfo)
+        {
+            hunters.Add(new Hunter(jobInfo.Health, jobInfo.Strength, name, jobInfo.ScoreMultiplier));
+            cart.Money += jobInfo.StartingMoney;
+        }
+
+        public EVENT_TYPE randomEvent()
+        {
+            EVENT_TYPE e = EVENT_TYPE.NO_EVENT;
+
+            //These should come from elsewhere eventually
+            int breakChance = 20;
+            int fightChance = 20;
+
+            Random rng = new Random();
+            List<string> availableToBreak = new List<string>();
+            if (cart.Wheels > 0) availableToBreak.Add("wheel");
+            if (cart.Axles > 0) availableToBreak.Add("axle");
+            if (cart.Batteries > 0) availableToBreak.Add("battery");
+
+            if (availableToBreak.Count > 0 && rng.Next(0, 100) < breakChance)
+            {
+                switch (availableToBreak[rng.Next(0, availableToBreak.Count)])
                 {
-                    case GAME_STATE.GAME_STATE_STARTING_INFO:
-                        startInfo();
+                    case "axle":
+                        cart.breakAxle();
+                        e = EVENT_TYPE.BREAK_AXLE;
                         break;
-
-                    case GAME_STATE.GAME_STATE_START_MENU:
-                        startMenu();
+                    case "wheel":
+                        cart.breakWheel();
+                        e = EVENT_TYPE.BREAK_WHEEL;
                         break;
-
-                    case GAME_STATE.GAME_STATE_SCORES:
-                        scoreBoard();
-                        break;
-
-                    case GAME_STATE.GAME_STATE_SHOPPING:
-                        shopMenu();
-                        break;
-
-                    case GAME_STATE.GAME_STATE_TRAVELLING:
-                        travelLoop();
+                    case "battery":
+                        cart.breakBattery();
+                        e = EVENT_TYPE.BREAK_BATTERY;
                         break;
                 }
             }
-            exitMessage();
+            else if (rng.Next(0, 100) < fightChance)
+            {
+                e = EVENT_TYPE.FIGHT;
+            }
+
+            return e;
+        }
+        
+        public void travel()
+        {
+            //Need location class to be implemented before this can do anyting @Jarod Blazo
         }
 
-        private void startMenu()
+        public void updateStatus()
         {
-            uiPresenter.showOpeningScreen();
-            uiInputController.getStartMenuInput();
-            uiPresenter.showStartMenuOptions();
-            int option = getOption(1, 3);
-            if (option == 1)
+            foreach(Hunter hunter in hunters)
             {
-                gameState = GAME_STATE.GAME_STATE_STARTING_INFO;
-            }
-            else if (option == 2)
-            {
-                gameState = GAME_STATE.GAME_STATE_SCORES;
-            }
-            else if (option == 3)
-            {
-                gameState = GAME_STATE.GAME_STATE_QUIT;
-            }
-        }
-
-        private void startInfo()
-        {
-            player = createPlayer();
-            Shopping.Money = player.Money;
-            gameState = GAME_STATE.GAME_STATE_SHOPPING;
-        }
-
-        private int getOption(int lower, int upper)
-        {
-            try
-            {
-                int option = Convert.ToInt32(uiInputController.getResponse());
-                if (option >= lower && option <= upper)
+                if(hunter.isAlive())
                 {
-                    return option;
-                }
-                else
-                {
-                    uiPresenter.showIntError();
-                    return getOption(lower, upper);
+                    hunter.eat(rations);
+                    cart.Food -= (int)rations;
                 }
             }
-            catch (Exception ex)
-            {
-                uiPresenter.showIntError();
-                return getOption(lower, upper);
-            }
-        }
-
-        private int getMoneyOption(int lower, int price)
-        {
-            try
-            {
-                int max = (Shopping.Money / price);
-                int option = Convert.ToInt32(uiInputController.getResponse());
-                if (option >= lower && option <= max)
-                {
-                    Shopping.Money = Shopping.Money - (price * option);
-                    return option;
-                }
-                else
-                {
-                    uiPresenter.showMoneyError();
-                    return getMoneyOption(lower, price);
-                }
-            }
-            catch (Exception ex)
-            {
-                uiPresenter.showIntError();
-                return getMoneyOption(lower, price);
-            }
-        }
-
-        private HunterJobInfo createPlayer()
-        {
-            String name = getPlayerName();
-            int jobChoice = getPlayerJob();
-            //Because any errors should be handled in the methods already called, let else have the last case to satisfy the return value
-            if (jobChoice == 1)
-            {
-                HunterJobInfo player = new HunterJobInfo(name, 100, 15, 1.2, 700);
-                return player;
-            }
-            else
-            {
-                HunterJobInfo player = new HunterJobInfo(name, 100, 25, 1.2, 500);
-                return player;
-            }
-            
-        }
-
-        private String getPlayerName()
-        {
-            uiPresenter.showNameRequest();
-            String name = uiInputController.getResponse();
-            return name;
-        }
-
-        private int getPlayerJob()
-        {
-            uiPresenter.showDecideJob();
-            int job = getOption(1, 2);
-            return job;
-        }
-        private void scoreBoard()
-        {
-            uiPresenter.showScores();
-            uiPresenter.showContinue();
-            uiInputController.getStartMenuInput();
-            gameState = GAME_STATE.GAME_STATE_START_MENU;
-        }
-
-        private void shopMenu()
-        {
-            uiPresenter.showMoney();
-            uiPresenter.showShopWheel();
-            int wheelAmt = getMoneyOption(0, 50);
-            cart.Wheels = wheelAmt;
-            uiPresenter.showShopAxle();
-            int axleAmt = getMoneyOption(0, 100);
-            cart.Axles = axleAmt;
-            uiPresenter.showShopBattery();
-            int batteryAmt = getMoneyOption(0, 20);
-            cart.Batteries = batteryAmt;
-            gameState = GAME_STATE.GAME_STATE_TRAVELLING;
-        }
-
-        private void travelLoop()
-        {
-            uiPresenter.showStopTravel();
-            while (uiInputController.loopKey() == false)
-            {
-                Days.continueTravel();
-                uiPresenter.showCurrentDay();
-            }
-            gameState = GAME_STATE.GAME_STATE_QUIT;
-
-        }
-
-        private void exitMessage()
-        {
-            uiPresenter.showExitMessage();
         }
     }
 }

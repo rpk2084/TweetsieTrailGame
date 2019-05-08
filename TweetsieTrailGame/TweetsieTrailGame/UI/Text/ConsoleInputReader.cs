@@ -23,5 +23,16 @@ namespace TweetsieTrailGame
         {
             return Console.ReadLine();
         }
+
+        public int getInt()
+        {
+            int intInput;
+            bool success = int.TryParse(Console.ReadLine(), out intInput);
+            if(!success)
+            {
+                throw new TweetsieInputException("Unable to convert input to integer");
+            }
+            return intInput;
+        }
     }
 }

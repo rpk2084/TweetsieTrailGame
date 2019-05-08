@@ -9,9 +9,10 @@ namespace TweetsieTrailGame
     {
         public void displayText(TextViewModel viewModel)
         {
+            Console.Clear();
             for(int i = 0; i < viewModel.Count; ++i)
             {
-                Console.WriteLine(viewModel[i]);
+                Console.Write(viewModel[i]);
             }
         }
     }
