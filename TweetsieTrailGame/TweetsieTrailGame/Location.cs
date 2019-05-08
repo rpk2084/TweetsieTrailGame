@@ -22,7 +22,7 @@ namespace TweetsieTrailGame
             this.next = sNext;
         }
 
-        public String Name
+        public string Name
         {
             get
             {
