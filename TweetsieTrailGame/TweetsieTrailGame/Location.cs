@@ -7,13 +7,13 @@ namespace TweetsieTrailGame
 {
     class Location
     {
-        private int name;
+        private String name;
         private int distance;
         private bool stop;
         private int breakChance;
         private int next;
 
-        public Location(int sName, int sDistance, bool sStop, int sBreakChance, int sNext)
+        public Location(String sName, int sDistance, bool sStop, int sBreakChance, int sNext)
         {
             this.name = sName;
             this.distance = sDistance;
@@ -22,7 +22,7 @@ namespace TweetsieTrailGame
             this.next = sNext;
         }
 
-        public int Name
+        public String Name
         {
             get
             {
