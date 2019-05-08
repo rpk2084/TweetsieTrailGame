@@ -9,6 +9,7 @@ namespace TweetsieTrailGame
     class TweetsieTrailGame
     {
         public static List<EnemyCreateInfo> enemyTypes;
+        public static Random rng = new Random();
 
         private GolfCart cart;
         private Days day;
@@ -88,13 +89,14 @@ namespace TweetsieTrailGame
             int breakChance = 10;
             int fightChance = 10;
 
-            Random rng = new Random();
             List<string> availableToBreak = new List<string>();
             if (cart.Wheels > 0) availableToBreak.Add("wheel");
             if (cart.Axles > 0) availableToBreak.Add("axle");
             if (cart.Batteries > 0) availableToBreak.Add("battery");
 
-            if (availableToBreak.Count > 0 && rng.Next(0, 100) < breakChance)
+            int randomChoice = rng.Next(0, 100);
+
+            if (availableToBreak.Count > 0 && randomChoice < breakChance)
             {
                 switch (availableToBreak[rng.Next(0, availableToBreak.Count)])
                 {
@@ -112,7 +114,7 @@ namespace TweetsieTrailGame
                         break;
                 }
             }
-            else if (rng.Next(0, 100) < fightChance)
+            else if (randomChoice < fightChance + breakChance)
             {
                 e = EVENT_TYPE.FIGHT;
             }
@@ -149,7 +151,6 @@ namespace TweetsieTrailGame
 
         public Fight createFight()
         {
-            Random rng = new Random();
             return new Fight(getLiveHunters(), TweetsieTrailGame.enemyTypes[rng.Next(0, TweetsieTrailGame.enemyTypes.Count)]);
         }
 
