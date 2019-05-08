@@ -21,15 +21,18 @@ namespace TweetsieTrailGame
         //private IPresenter uiPresenter;
         //private IInputController uiInputController;
         private ITweetsieUI ui;
+        private IFileManager fileManager;
 
         //Declare entities
         private GAME_STATE gameState;
         private TweetsieTrailGame game;
 
         //The constructor is the only part of this class that should be public
-        public TweetsieGameController(ITweetsieUI tweetsieUI, int playerCount)
+        public TweetsieGameController(ITweetsieUI tweetsieUI, IFileManager fileManager, int playerCount)
         {
             ui = tweetsieUI;
+            this.fileManager = fileManager;
+            TweetsieTrailGame.enemyTypes = fileManager.loadEnemyTypes();
             game = new TweetsieTrailGame(playerCount);
 
             //start the main loop
@@ -74,12 +77,7 @@ namespace TweetsieTrailGame
 
         private void startInfo()
         {
-            //replace this section with a file later
-            List<HunterJobInfo> hunterJobList = new List<HunterJobInfo>();
-            hunterJobList.Add(new HunterJobInfo("Banker", 100, 15, 1.2, 100));
-            hunterJobList.Add(new HunterJobInfo("Fighter", 100, 20, 1.2, 50));
-            //end of section that should be replaced with a file
-
+            List<HunterJobInfo> hunterJobList = fileManager.loadHunterJobsInfos();
             for (int i = 0; i < game.PlayerCount; ++i)
             {
                 string playerName;
