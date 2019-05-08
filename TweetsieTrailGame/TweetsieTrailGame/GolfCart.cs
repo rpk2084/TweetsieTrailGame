@@ -89,5 +89,29 @@ namespace TweetsieTrailGame
                 this.food = value;
             }
         }
+
+        public void breakBattery()
+        {
+            if (batteries > 0)
+            {
+                batteries -= 1;
+            }
+        }
+
+        public void breakAxle()
+        {
+            if (axles > 0)
+            {
+                axles -= 1;
+            }
+        }
+
+        public void breakWheel()
+        {
+            if (wheels > 0)
+            {
+                wheels -= 1;
+            }
+        }
     }
 }

@@ -12,5 +12,8 @@ namespace TweetsieTrailGame
         void shoppingMenu(GolfCart cart);
         void changePace(Days day);
         void continueTravel(Days day);
+        void breakAxleNotification(int remainingAxles);
+        void breakWheelNotification(int remainingWheels);
+        void breakBatteryNotification(int remainingBatteries);
     }
 }

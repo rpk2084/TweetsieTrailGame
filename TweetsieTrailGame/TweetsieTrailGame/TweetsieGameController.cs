@@ -138,8 +138,40 @@ namespace TweetsieTrailGame
 
         private void travelLoop()
         {
-            ui.continueTravel(game.Day);
-            gameState = GAME_STATE.GAME_STATE_QUIT;
+            bool continueTravel = true;
+            while(continueTravel)
+            {
+                EVENT_TYPE e = game.randomEvent();
+                if(e != EVENT_TYPE.NO_EVENT)
+                {
+                    switch(e)
+                    {
+                        case EVENT_TYPE.BREAK_AXLE:
+                            ui.breakAxleNotification(game.Cart.Axles);
+                            break;
+                        case EVENT_TYPE.BREAK_WHEEL:
+                            ui.breakWheelNotification(game.Cart.Wheels);
+                            break;
+                        case EVENT_TYPE.BREAK_BATTERY:
+                            ui.breakBatteryNotification(game.Cart.Batteries);
+                            break;
+                        case EVENT_TYPE.FIGHT:
+                            fightLoop();
+                            break;
+                    }
+                }
+                //this needs to be updated to return a location and handle the location once the location class is created
+                game.travel();
+                game.updateStatus();
+                
+            }
+            //ui.continueTravel(game.Day);
+            //gameState = GAME_STATE.GAME_STATE_QUIT;
+        }
+
+        private void fightLoop()
+        {
+
         }
 
         private void exitMessage()

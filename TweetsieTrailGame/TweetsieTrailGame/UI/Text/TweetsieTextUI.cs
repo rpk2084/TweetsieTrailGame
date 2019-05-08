@@ -187,5 +187,34 @@ namespace TweetsieTrailGame
                 day.continueTravel();
             }
         }
+
+        public void breakAxleNotification(int remainingAxles)
+        {
+            TextUIModel breakAxleModel = new TextUIModel();
+            breakAxleModel.Header.Add("An axle broke. You have " + remainingAxles + " axles left");
+            breakAxleModel.InputPrompt = "Press any key to continue>>";
+            presenter.showTextUIModel(breakAxleModel);
+            inputController.waitForKeyPress();
+        }
+
+        public void breakWheelNotification(int remainingWheels)
+        {
+            TextUIModel breakAxleModel = new TextUIModel();
+            breakAxleModel.Header.Add("A wheel broke. You have " + remainingWheels + " wheels left");
+            breakAxleModel.InputPrompt = "Press any key to continue>>";
+            presenter.showTextUIModel(breakAxleModel);
+            inputController.waitForKeyPress();
+        }
+
+        public void breakBatteryNotification(int remainingBatteries)
+        {
+            TextUIModel breakAxleModel = new TextUIModel();
+            breakAxleModel.Header.Add("A battery broke. You have " + remainingBatteries + " batteries left");
+            breakAxleModel.InputPrompt = "Press any key to continue>>";
+            presenter.showTextUIModel(breakAxleModel);
+            inputController.waitForKeyPress();
+        }
     }
+
+    
 }
