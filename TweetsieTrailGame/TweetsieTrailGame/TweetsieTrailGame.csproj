@@ -47,6 +47,8 @@
     <Compile Include="EnemyCreateInfo.cs" />
     <Compile Include="EventTypes.cs" />
     <Compile Include="Fight.cs" />
+    <Compile Include="FileManager\DummyFileManager.cs" />
+    <Compile Include="FileManager\IFileManager.cs" />
     <Compile Include="Pace.cs" />
     <Compile Include="Rations.cs" />
     <Compile Include="UI\Text\ConsoleInputReader.cs" />
@@ -74,7 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\Locations.txt" />
+    <Content Include="Locations.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

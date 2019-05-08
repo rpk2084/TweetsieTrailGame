@@ -15,9 +15,11 @@ namespace TweetsieTrailGame
             ConsoleInputReader reader = new ConsoleInputReader();
             TextInputController controller = new TextInputController(reader);
 
+            DummyFileManager fileManager = new DummyFileManager();
+
             TweetsieUI ui = new TweetsieUI(presenter, controller);
 
-            TweetsieGameController game = new TweetsieGameController(ui, 3);
+            TweetsieGameController game = new TweetsieGameController(ui, fileManager, 3);
 
             ////Create golf cart object so starting materials can be applied
             //GolfCart cart = new GolfCart();

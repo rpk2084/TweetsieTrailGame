@@ -1,3 +1,17 @@
-Location	Distance	Stop?	BreakChance	Next
-Quarry		45		true	0		Log
-Log		60		flase	20
+﻿Location				Distance	Stop?	Breakchance		Next
+JohnsonCity				0			false	0				TrailHead
+TrailHead				3			true	20				FencedBridge			
+FencedBridge			6			true	20				HomelessBridgeCamp			
+HomelessBridgeCamp		9			false	0				CountyLine		
+CountyLine				12			true	25				DairyFarm
+DairyFarm				15			true	25				TheGeneralStore										
+TheGeneralStore			18			false	0				MilliganDepot
+MilliganDepot			21			true	25				OldUnderpass
+OldUnderpass			24			true	25				Elizabethton
+Elizabethton			27			false	0				SycamoreShoals
+SycamoreShoals			30			true	30				BetsyHS
+BetsyHS					33			true	35				DownTown
+DownTown				36			false	0				BadLands
+BadLands				39			true	40				AbandonFactory
+AbadandonedFactory		42			true	40
+

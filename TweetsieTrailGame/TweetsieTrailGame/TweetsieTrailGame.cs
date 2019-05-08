@@ -8,13 +8,15 @@ namespace TweetsieTrailGame
 
     class TweetsieTrailGame
     {
+        public static List<EnemyCreateInfo> enemyTypes;
+
         private GolfCart cart;
         private Days day;
         private int playerCount;
         private List<Hunter> hunters;
         private RATIONS rations;
         private PACE pace;
-        private List<EnemyCreateInfo> enemyTypes;
+        
 
 
         public TweetsieTrailGame(int numPlayers)
