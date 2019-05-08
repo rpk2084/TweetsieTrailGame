@@ -14,6 +14,7 @@ namespace TweetsieTrailGame
         private List<Hunter> hunters;
         private RATIONS rations;
         private PACE pace;
+        private List<EnemyCreateInfo> enemyTypes;
 
 
         public TweetsieTrailGame(int numPlayers)

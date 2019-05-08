@@ -44,7 +44,9 @@
     <Compile Include="Location.cs" />
     <Compile Include="Combatant.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="EnemyCreateInfo.cs" />
     <Compile Include="EventTypes.cs" />
+    <Compile Include="Fight.cs" />
     <Compile Include="Pace.cs" />
     <Compile Include="Rations.cs" />
     <Compile Include="UI\Text\ConsoleInputReader.cs" />
@@ -72,7 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\TextFile1.txt" />
+    <Content Include="Properties\Locations.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

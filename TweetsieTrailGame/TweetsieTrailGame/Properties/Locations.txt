@@ -14,3 +14,4 @@ BetsyHS					33			true	35				DownTown
 DownTown				36			false	0				BadLands
 BadLands				39			true	40				AbandonFactory
 AbadandonedFactory		42			true	40
+

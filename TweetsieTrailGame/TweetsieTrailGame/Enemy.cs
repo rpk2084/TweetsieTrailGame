@@ -16,6 +16,12 @@ namespace TweetsieTrailGame
             this.scoreValue = scoreValue;
         }
 
+        public Enemy(EnemyCreateInfo info): base(info.Health, info.Strength, info.Name)
+        {
+            foodAmount = info.FoodAmount;
+            scoreValue = info.ScoreValue;
+        }
+
         public int FoodAmount
         {
             get
