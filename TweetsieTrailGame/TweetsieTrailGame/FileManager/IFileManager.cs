@@ -9,7 +9,7 @@ namespace TweetsieTrailGame
     {
         ScoreTable loadScoreTable();
         List<EnemyCreateInfo> loadEnemyTypes();
-        //List<Location> loadLocations(string path);
+        List<Location> loadLocations();
         List<HunterJobInfo> loadHunterJobsInfos();
         void saveScoreTable(ScoreTable scores);
     }

@@ -33,5 +33,27 @@ namespace TweetsieTrailGame
         {
             throw new NotImplementedException();
         }
+
+        public List<Location> loadLocations()
+        {
+            List<Location> locations = new List<Location>();
+            locations.Add(new Location("JohnsonCity", 0, false, 0, 0));
+            locations.Add(new Location("TrailHead", 3, true, 20, 1));
+            locations.Add(new Location("FencedBridge", 6, true, 20, 2));
+            locations.Add(new Location("HomelessBridgeCamp", 9, false, 0, 3));
+            locations.Add(new Location("CountyLine", 12, true, 25, 4));
+            locations.Add(new Location("DairyFarm", 15, true, 25, 5));
+            locations.Add(new Location("TheGeneralStore", 18, false, 0, 5));
+            locations.Add(new Location("MilliganDepot", 21, true, 25, 6));
+            locations.Add(new Location("OldUnderpass", 24, true, 25, 7));
+            locations.Add(new Location("Elizabethton", 27, false, 0, 8));
+            locations.Add(new Location("SycamoreShoals", 30, true, 30, 9));
+            locations.Add(new Location("BetsyHS", 33, true, 35, 10));
+            locations.Add(new Location("DownTown", 36, false, 0, 11));
+            locations.Add(new Location("BadLands", 39, true, 40, 12));
+            locations.Add(new Location("AbadandonedFactory", 42, true, 40, -1));
+
+            return locations;
+        }
     }
 }
