@@ -11,6 +11,7 @@ namespace TweetsieTrailGame
         GAME_STATE_TRAVELLING,
         GAME_STATE_SHOPPING,
         GAME_STATE_SCORES,
+        GAME_STATE_GAME_OVER,
         GAME_STATE_QUIT,
         GAME_STATE_STARTING_INFO
     };
@@ -169,7 +170,31 @@ namespace TweetsieTrailGame
 
         private void fightLoop()
         {
-
+            Fight fight = game.createFight();
+            bool continueFight = true;
+            while(continueFight)
+            {
+                continueFight = ui.ongoingFightMenu(fight);
+                if(continueFight)
+                {
+                    FIGHT_STATUS fightStatus = fight.fightRound();
+                    switch(fightStatus)
+                    {
+                        case FIGHT_STATUS.ONGOING:
+                            continueFight = true;
+                            break;
+                        case FIGHT_STATUS.ENEMY_WINS:
+                            continueFight = false;
+                            gameState = GAME_STATE.GAME_STATE_GAME_OVER;
+                            break;
+                        case FIGHT_STATUS.PLAYER_WINS:
+                            continueFight = false;
+                            ui.playerWonFightMenu(fight.Enemy);
+                            game.playerWinsFight(fight.Enemy);
+                            break;
+                    }
+                }
+            }
         }
 
         private void exitMessage()

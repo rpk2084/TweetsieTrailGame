@@ -25,13 +25,40 @@ namespace TweetsieTrailGame
             rng = new Random();
         }
 
+        public Enemy Enemy
+        {
+            get
+            {
+                return enemy;
+            }
+        }
+
+        public List<Hunter> Hunters
+        {
+            get
+            {
+                return hunters;
+            }
+        }
+
         public FIGHT_STATUS fightRound()
         {
             FIGHT_STATUS status = FIGHT_STATUS.ONGOING;
             enemy.attack(hunters[rng.Next(0, hunters.Count)]);
-            foreach(Hunter hunter in hunters)
+            if (playersAlive())
             {
-                if(hunter.isAlive()) hunter.attack(enemy);
+                foreach (Hunter hunter in hunters)
+                {
+                    if (hunter.isAlive()) hunter.attack(enemy);
+                }
+                if(!enemy.isAlive())
+                {
+                    status = FIGHT_STATUS.PLAYER_WINS;
+                }
+            }
+            else
+            {
+                status = FIGHT_STATUS.ENEMY_WINS;
             }
 
             return status;

@@ -16,6 +16,7 @@ namespace TweetsieTrailGame
         private List<Hunter> hunters;
         private RATIONS rations;
         private PACE pace;
+        private int score;
         
 
 
@@ -84,8 +85,8 @@ namespace TweetsieTrailGame
             EVENT_TYPE e = EVENT_TYPE.NO_EVENT;
 
             //These should come from elsewhere eventually
-            int breakChance = 20;
-            int fightChance = 20;
+            int breakChance = 10;
+            int fightChance = 10;
 
             Random rng = new Random();
             List<string> availableToBreak = new List<string>();
@@ -134,6 +135,28 @@ namespace TweetsieTrailGame
                     cart.Food -= (int)rations;
                 }
             }
+        }
+
+        private List<Hunter> getLiveHunters()
+        {
+            List<Hunter> liveHunters = new List<Hunter>();
+            foreach(Hunter hunter in hunters)
+            {
+                if (hunter.isAlive()) liveHunters.Add(hunter);
+            }
+            return liveHunters;
+        }
+
+        public Fight createFight()
+        {
+            Random rng = new Random();
+            return new Fight(getLiveHunters(), TweetsieTrailGame.enemyTypes[rng.Next(0, TweetsieTrailGame.enemyTypes.Count)]);
+        }
+
+        public void playerWinsFight(Enemy enemy)
+        {
+            cart.Food += enemy.FoodAmount;
+            score += enemy.ScoreValue;
         }
     }
 }
