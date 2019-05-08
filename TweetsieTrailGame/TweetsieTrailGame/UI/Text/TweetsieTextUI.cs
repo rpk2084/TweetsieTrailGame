@@ -182,7 +182,7 @@ namespace TweetsieTrailGame
                 //Can weather just return a string like this???
                 TextUIModel continueTravel = new TextUIModel();
                 continueTravel.Header.Add("Day: " + day.Day);
-                continueTravel.Header.Add("Weather: " + Weather.getWeather());
+                continueTravel.Header.Add("Weather: " + Terrain.getWeather());
                 presenter.showTextUIModel(continueTravel);
                 day.continueTravel();
             }

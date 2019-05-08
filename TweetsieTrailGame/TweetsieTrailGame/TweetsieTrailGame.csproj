@@ -68,7 +68,7 @@
     <Compile Include="UI\Text\TweetsieTextUI.cs" />
     <Compile Include="TweetsieTrailGame.cs" />
     <Compile Include="TweetsieGameController.cs" />
-    <Compile Include="Weather.cs" />
+    <Compile Include="Terrain.cs" />
     <Compile Include="GolfCart.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
