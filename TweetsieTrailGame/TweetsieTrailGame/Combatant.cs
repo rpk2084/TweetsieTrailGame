@@ -50,6 +50,7 @@ namespace TweetsieTrailGame
         {
             return this.Health > 0;
         }
+
         public string Name
         {
             get

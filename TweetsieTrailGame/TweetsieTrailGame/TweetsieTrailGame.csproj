@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Combatant.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="EventTypes.cs" />
+    <Compile Include="Pace.cs" />
+    <Compile Include="Rations.cs" />
     <Compile Include="UI\Text\ConsoleInputReader.cs" />
     <Compile Include="UI\Text\ConsoleTextViewer.cs" />
     <Compile Include="Days.cs" />

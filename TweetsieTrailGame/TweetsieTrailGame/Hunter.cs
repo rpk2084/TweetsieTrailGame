@@ -20,5 +20,10 @@ namespace TweetsieTrailGame
                 return this.scoreMultiplier;
             }
         }
+
+        public void eat(RATIONS food)
+        {
+            Health += (int)food;
+        }
     }
 }
