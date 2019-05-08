@@ -214,6 +214,39 @@ namespace TweetsieTrailGame
             presenter.showTextUIModel(breakAxleModel);
             inputController.waitForKeyPress();
         }
+
+        public bool ongoingFightMenu(Fight fight)
+        {
+            TextUIModel fightModel = new TextUIModel();
+            fightModel.Header.Add("A " + fight.Enemy.Name + " approaches." + " It has " + fight.Enemy.Health + " health, " + fight.Enemy.Strength + " strength");
+            foreach(Hunter hunter in fight.Hunters)
+            {
+                if (hunter.isAlive()) fightModel.Header.Add(hunter.Name + ": " + hunter.Health + " health, " + hunter.Strength + " strength");
+                else fightModel.Header.Add(hunter.Name + " is dead");
+            }
+            fightModel.Options.Add("Fight");
+            fightModel.Options.Add("Run away");
+            fightModel.InputPrompt = "What do you want to do? >>";
+            presenter.showTextUIModel(fightModel);
+            int option = getPlayerOption(fightModel);
+            bool continueFighting = true;
+            if(option == 2)
+            {
+                continueFighting = false;
+            }
+            return continueFighting;
+        }
+
+        public void playerWonFightMenu(Enemy enemy)
+        {
+            TextUIModel fightWonModel = new TextUIModel();
+            fightWonModel.Header.Add("You defeated the " + enemy.Name);
+            fightWonModel.Header.Add("You got " + enemy.FoodAmount + " food for winning");
+            fightWonModel.Header.Add(enemy.ScoreValue + " points have been added to your final score");
+            fightWonModel.InputPrompt = "Press any key to continue>>";
+            presenter.showTextUIModel(fightWonModel);
+            inputController.waitForKeyPress();
+        }
     }
 
     
