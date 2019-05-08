@@ -22,6 +22,57 @@ namespace TweetsieTrailGame
             this.next = sNext;
         }
 
+        public int Name
+        {
+            get
+            {
+                return this.name;
+            }
+        }
 
+        public int Distance
+        {
+            get
+            {
+                return this.distance;
+            }
+            set
+            {
+                this.distance = value;
+            }
+        }
+        public bool Stop
+        {
+            get
+            {
+                return this.stop;
+            }
+            set
+            {
+                this.stop = value;
+            }
+        }
+        public int BreakChance
+        {
+            get
+            {
+                return this.breakChance;
+            }
+            set
+            {
+                this.breakChance = value;
+            }
+        }
+        public int Next
+        {
+            get
+            {
+                return this.next;
+            }
+            set
+            {
+                this.next = value;
+            }
+        }
     }
 }
