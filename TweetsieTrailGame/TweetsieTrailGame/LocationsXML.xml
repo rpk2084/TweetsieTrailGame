@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <Locations>
-  <Location Name="Johnson City">
+  <Location Name="Johnson City"> 
     <Distance>0</Distance>
     <Stop?>false</Stop>
     <Breakchance>0</Breakchance>
@@ -17,12 +17,6 @@
     <Stop?>true</Stop>
     <Breakchance>20</Breakchance>
     <Next>HomelessBridge</Next>
-  </Location>
-  <Location Name="HomelessBridge">
-    <Distance>9</Distance>
-    <Stop?>false</Stop>
-    <Breakchance>0</Breakchance>
-    <Next>CountyLine</Next>
   </Location>
   <Location Name="HomelessBridge">
     <Distance>9</Distance>
