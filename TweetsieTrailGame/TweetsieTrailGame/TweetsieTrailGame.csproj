@@ -69,6 +69,7 @@
     <Compile Include="HunterJobInfo.cs" />
     <Compile Include="UI\Text\ITextInputController.cs" />
     <Compile Include="UI\ITweetsieUI.cs" />
+    <Compile Include="UI\Text\SpanishTextUI.cs" />
     <Compile Include="UI\Text\TextUIModel.cs" />
     <Compile Include="UI\TweetsieInputException.cs" />
     <Compile Include="UI\Text\ITextPresenter.cs" />
