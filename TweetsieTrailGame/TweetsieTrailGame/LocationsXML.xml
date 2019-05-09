@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Locations>
-  <Location Name="Johnson City"> 
+  <Location Name="Johnson City">
     <Distance>0</Distance>
     <Stop?>false</Stop>
     <Breakchance>0</Breakchance>
@@ -48,3 +48,4 @@
     <Breakchance>25</Breakchance>
     <Next>OldUnderpass</Next>
   </Location>
+</Locations>
