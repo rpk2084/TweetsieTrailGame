@@ -172,7 +172,7 @@ namespace TweetsieTrailGame
             }
         }
 
-        public void changePace(Days day)
+        public void changePace(Map map)
         {
             TextUIModel changePace = new TextUIModel();
             changePace.Header.Add("Which would you like to buy?");
@@ -182,7 +182,7 @@ namespace TweetsieTrailGame
             changePace.Options.Add("SnailMail Fast");
             changePace.InputPrompt = "Enter your choice>>";
             int option = getPlayerOption(changePace);
-            day.Pace = option;
+            map.Pace = option;
         }
 
         public void continueTravel(Days day)
@@ -192,7 +192,7 @@ namespace TweetsieTrailGame
                 //Can weather just return a string like this???
                 TextUIModel continueTravel = new TextUIModel();
                 continueTravel.Header.Add("Day: " + day.Day);
-                continueTravel.Header.Add("Weather: " + Terrain.getWeather());
+                continueTravel.Header.Add("Weather: " + Terrain.getTerrain());
                 presenter.showTextUIModel(continueTravel);
                 day.continueTravel();
             }

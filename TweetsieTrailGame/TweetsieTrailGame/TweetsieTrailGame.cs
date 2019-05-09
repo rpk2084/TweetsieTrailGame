@@ -22,7 +22,7 @@ namespace TweetsieTrailGame
         
 
 
-        public TweetsieTrailGame(int numPlayers)
+        public TweetsieTrailGame(int numPlayers, List<Location> map)
         {
             playerCount = numPlayers;
             hunters = new List<Hunter>();
@@ -30,7 +30,7 @@ namespace TweetsieTrailGame
             day = new Days();
             rations = RATIONS.FILLING;
             pace = PACE.SLOW;
-            gameMap = new Map();
+            gameMap = new Map(map);
         }
 
         public GolfCart Cart
@@ -139,16 +139,11 @@ namespace TweetsieTrailGame
         
         public bool travel()
         {
-            bool arrived = false;
             day.continueTravel();
-            Location currentPlace = Locations[locationListPosition];
-            Location nextPlace = currentPlace.Next;
-            if (day.Distance >= nextPlace.Distance)
-            {
-                day.Distance = nextPlace.Distance;
-                arrived = true;
-            }
+            bool arrived = GameMap.atLocation();
             return arrived;
+            
+            
         }
 
         public List<Hunter> updateStatus()

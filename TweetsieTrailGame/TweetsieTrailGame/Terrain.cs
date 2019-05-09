@@ -9,7 +9,7 @@ namespace TweetsieTrailGame
     {
 
         //getWeather just uses the built in random class to return a number 1-4. This can later be used to affect health
-        public static String getTraining()
+        public static String getTerrain()
         {
             Random rnd = new Random();
             int currentState = rnd.Next(1, 5);
