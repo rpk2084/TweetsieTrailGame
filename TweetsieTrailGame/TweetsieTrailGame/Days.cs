@@ -8,14 +8,10 @@ namespace TweetsieTrailGame
     class Days
     {
         private int day;
-        private int distance;
-        private int pace;
-        private int totalDistance = 400;
+        
         public Days()
         {
             day = 0;
-            distance = 0;
-            pace = 1;
         }
 
         public int Day
@@ -30,36 +26,16 @@ namespace TweetsieTrailGame
             }
         }
 
-        public int Distance
-        {
-            get
-            {
-                return this.distance;
-            }
-            set
-            {
-                this.distance = value;
-            }
-        }
+        
 
-        public int Pace
-        {
-            get
-            {
-                return this.pace;
-            }
-            set
-            {
-                this.pace = value;
-            }
-        }
+        
 
         public void addDay()
         {
             Day++;
         }
 
-        public void changePace(Days dayCycle)
+        /*public void changePace(Days dayCycle)
         {
             Console.WriteLine("Enter numbers 1-4 to set the pace accordingly. 1 being the slowest and 4 being the fastest");
             int setPace = Convert.ToInt32(Console.ReadLine());
@@ -82,31 +58,13 @@ namespace TweetsieTrailGame
                     changePace(dayCycle);
                     break;
             }
-        }
+        }*/
 
-        public void calculateDailyDistance()
-        {
-            switch (Pace)
-            {
-                case 1:
-                    Distance = Distance + 20;
-                    break;
-                case 2:
-                    Distance = Distance + 25;
-                    break;
-                case 3:
-                    Distance = Distance + 30;
-                    break;
-                case 4:
-                    Distance = Distance + 35;
-                    break;
-            }
-        }
+        
 
         public void continueTravel()
         {
             addDay();
-            calculateDailyDistance();
             System.Threading.Thread.Sleep(250);
         }
     }
