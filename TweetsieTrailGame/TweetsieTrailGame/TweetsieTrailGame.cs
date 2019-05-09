@@ -92,7 +92,7 @@ namespace TweetsieTrailGame
         {
             get
             {
-                return this.score;
+                return this.score + ((100 - Day.Day)+10*hunters.Count());
             }
             set
             {
