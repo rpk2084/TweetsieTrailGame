@@ -91,11 +91,6 @@ namespace TweetsieTrailGame
 
         }
 
-        private void checkLocation()
-        {
-
-        }
-
         private void openingMenu()
         {
             this.gameState = ui.mainMenu();
@@ -149,9 +144,8 @@ namespace TweetsieTrailGame
 
         private void scoreBoard()
         {
-            //uiPresenter.showScores();
-            //uiPresenter.showContinue();
-            //uiInputController.getStartMenuInput();
+            ScoreTable scores = fileManager.loadScoreTable();
+            ui.showScores(scores);
             gameState = GAME_STATE.GAME_STATE_MAIN_MENU;
         }
 
@@ -186,7 +180,7 @@ namespace TweetsieTrailGame
                             break;
                     }
                 }
-                //this needs to be updated to return a location and handle the location once the location class is created
+
                 bool inWilderness = game.travel(ui.displayFork);
                 List<Hunter> deadHunters = game.updateStatus();
                 if(deadHunters.Count > 0)
@@ -202,6 +196,7 @@ namespace TweetsieTrailGame
                 {
                     if (game.GameMap.CurrentLocation == 14)
                     {
+                        finalFight();
                         ui.winningMenu();
                         string name = ui.askName();
                         ScoreTable table = fileManager.loadScoreTable();
@@ -263,6 +258,35 @@ namespace TweetsieTrailGame
         private void exitMessage()
         {
             //uiPresenter.showExitMessage();
+        }
+
+        private void finalFight()
+        {
+            Fight fight = game.createFinalFight();
+            bool continueFight = true;
+            while (continueFight)
+            {
+                continueFight = ui.ongoingFightMenu(fight);
+                if (continueFight)
+                {
+                    FIGHT_STATUS fightStatus = fight.fightRound();
+                    switch (fightStatus)
+                    {
+                        case FIGHT_STATUS.ONGOING:
+                            continueFight = true;
+                            break;
+                        case FIGHT_STATUS.ENEMY_WINS:
+                            continueFight = false;
+                            gameState = GAME_STATE.GAME_STATE_GAME_OVER;
+                            break;
+                        case FIGHT_STATUS.PLAYER_WINS:
+                            continueFight = false;
+                            ui.playerWonFightMenu(fight.Enemy);
+                            game.playerWinsFight(fight.Enemy);
+                            break;
+                    }
+                }
+            }
         }
     }
 }

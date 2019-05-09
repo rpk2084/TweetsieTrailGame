@@ -57,7 +57,7 @@ namespace TweetsieTrailGame
 
         public void sort()
         {
-            Scores.Sort((x, y) => x.Value.CompareTo(y.Value));
+            Scores.Sort((x, y) => y.Value.CompareTo(x.Value));
         }
     }
 }

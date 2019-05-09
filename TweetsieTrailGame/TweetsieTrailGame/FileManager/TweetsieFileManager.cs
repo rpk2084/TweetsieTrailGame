@@ -99,7 +99,14 @@ namespace TweetsieTrailGame
 
             foreach(List<string> score in objList.ObjectRows)
             {
-                scores.Add(new Score(score[0], int.Parse(score[1])));
+                try
+                {
+                    scores.Add(new Score(score[0], int.Parse(score[1])));
+                }
+                catch
+                {
+
+                }
             }
             ScoreTable table = new ScoreTable(scores);
             table.sort();

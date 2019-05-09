@@ -26,5 +26,6 @@ namespace TweetsieTrailGame
         int displayFork(Map map);
         string askName();
         void waitForKey();
+        void showScores(ScoreTable table);
     }
 }

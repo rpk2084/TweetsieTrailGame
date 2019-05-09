@@ -206,13 +206,39 @@ namespace TweetsieTrailGame
 
         public Fight createFight()
         {
-            return new Fight(getLiveHunters(), TweetsieTrailGame.enemyTypes[rng.Next(0, TweetsieTrailGame.enemyTypes.Count)]);
+            EnemyCreateInfo info = new EnemyCreateInfo("fail", 0, 0, 0, 0);
+            bool found = false;
+            while(!found)
+            {
+                EnemyCreateInfo testInfo = TweetsieTrailGame.enemyTypes[rng.Next(0, TweetsieTrailGame.enemyTypes.Count)];
+                if(testInfo.Name != "Tweetsieman")
+                {
+                    info = testInfo;
+                    found = true;
+                }
+            }
+            return new Fight(getLiveHunters(), info);
         }
 
         public void playerWinsFight(Enemy enemy)
         {
             cart.Food += enemy.FoodAmount;
             score += enemy.ScoreValue;
+        }
+
+        public Fight createFinalFight()
+        {
+            EnemyCreateInfo tManInfo = new EnemyCreateInfo("fail", 0, 0, 0, 0);
+
+            foreach(EnemyCreateInfo info in TweetsieTrailGame.enemyTypes)
+            {
+                if (info.Name == "Tweetsieman")
+                {
+                    tManInfo = info;
+                }
+            }
+
+            return new Fight(hunters, tManInfo);
         }
     }
 }
