@@ -45,7 +45,7 @@ namespace TweetsieTrailGame
         {
             FIGHT_STATUS status = FIGHT_STATUS.ONGOING;
             List<Hunter> liveHunters = getLiveHunters();
-            enemy.attack(liveHunters[rng.Next(0, liveHunters.Count)]);
+            if(liveHunters.Count > 0) enemy.attack(liveHunters[rng.Next(0, liveHunters.Count)]);
             liveHunters = getLiveHunters();
             if (liveHunters.Count > 0)
             {
