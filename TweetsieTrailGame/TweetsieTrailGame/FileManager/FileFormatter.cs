@@ -27,9 +27,8 @@ namespace TweetsieTrailGame
                 foreach (string entry in obj)
                 {
                     fileContent += entry + ",";
-
-                    fileContent += "\n";
                 }
+                fileContent += "\n";
             }
             writer.writeFile(filePath, fileContent);
         }
