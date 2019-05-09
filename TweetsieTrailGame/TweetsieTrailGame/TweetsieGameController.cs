@@ -203,7 +203,10 @@ namespace TweetsieTrailGame
                     if (game.GameMap.CurrentLocation == 14)
                     {
                         ui.winningMenu();
-                        gameState = GAME_STATE.GAME_STATE_MAIN_MENU;
+                        string name = ui.askName();
+                        ScoreTable table = fileManager.loadScoreTable();
+                        table.addScore(name, game.Score);
+                        gameState = GAME_STATE.GAME_STATE_SCORES;
                         break;
                     }
                     else

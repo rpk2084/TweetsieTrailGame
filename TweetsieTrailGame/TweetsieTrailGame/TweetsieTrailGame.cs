@@ -88,6 +88,17 @@ namespace TweetsieTrailGame
                 this.gameMap = value;
             }
         }
+        public int Score
+        {
+            get
+            {
+                return this.score;
+            }
+            set
+            {
+                this.score = value;
+            }
+        }
 
         public void addHunter(string name, HunterJobInfo jobInfo)
         {

@@ -24,5 +24,7 @@ namespace TweetsieTrailGame
         int arrivalMenu(Map map);
         void winningMenu();
         int displayFork(Map map);
+        string askName();
+        void waitForKey();
     }
 }

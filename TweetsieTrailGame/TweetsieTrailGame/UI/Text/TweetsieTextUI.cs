@@ -364,7 +364,9 @@ namespace TweetsieTrailGame
         {
             TextUIModel model = new TextUIModel();
             model.Header.Add("Congratulations, you won!");
+            model.InputPrompt = "Press any key to return to the main menu>>";
             presenter.showTextUIModel(model);
+            inputController.waitForKeyPress();
         }
 
         public int displayFork(Map map)
@@ -379,6 +381,23 @@ namespace TweetsieTrailGame
             int option = getPlayerOption(model);
             return option;
             
+        }
+
+        public string askName()
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("Enter  name for your score");
+            presenter.showTextUIModel(model);
+            string name = inputController.getStringInput();
+            return name;
+        }
+
+        public void waitForKey()
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("Press any key to continue");
+            presenter.showTextUIModel(model);
+            inputController.waitForKeyPress();
         }
     }
 
