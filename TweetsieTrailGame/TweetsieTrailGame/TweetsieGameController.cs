@@ -201,6 +201,7 @@ namespace TweetsieTrailGame
                         string name = ui.askName();
                         ScoreTable table = fileManager.loadScoreTable();
                         table.addScore(name, game.Score);
+                        fileManager.saveScoreTable(table);
                         gameState = GAME_STATE.GAME_STATE_SCORES;
                         break;
                     }
