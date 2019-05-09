@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileManager\IFileFormatter.cs" />
+    <Compile Include="FileManager\IFileParser.cs" />
+    <Compile Include="FileManager\ObjectList.cs" />
+    <Compile Include="FileManager\TweetsieFileManager.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Combatant.cs" />
     <Compile Include="Enemy.cs" />
@@ -49,6 +53,7 @@
     <Compile Include="Fight.cs" />
     <Compile Include="FileManager\DummyFileManager.cs" />
     <Compile Include="FileManager\IFileManager.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Pace.cs" />
     <Compile Include="Rations.cs" />
     <Compile Include="UI\Text\ConsoleInputReader.cs" />
@@ -70,13 +75,17 @@
     <Compile Include="UI\Text\TweetsieTextUI.cs" />
     <Compile Include="TweetsieTrailGame.cs" />
     <Compile Include="TweetsieGameController.cs" />
-    <Compile Include="Weather.cs" />
+    <Compile Include="Terrain.cs" />
     <Compile Include="GolfCart.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FileManager\Scores.txt" />
     <Content Include="Locations.txt" />
+    <Content Include="Enemies.txt" />
+    <Content Include="Locations.xml" />
+    <Content Include="Enemies.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

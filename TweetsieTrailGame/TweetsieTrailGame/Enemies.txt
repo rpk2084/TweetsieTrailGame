@@ -1,0 +1,7 @@
+﻿Name			Health			Strength			Food			ScoreValue
+CrackHead		20				80					5				65
+Homelessman		50				50					15				60
+BigChungus		80				65					25				80
+Tweetsieman		100				95					35				100
+RabidBunny		15				45					15				40
+AnnoyedOldman	10				5					5				10

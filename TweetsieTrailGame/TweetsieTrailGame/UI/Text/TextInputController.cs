@@ -32,20 +32,6 @@ namespace TweetsieTrailGame
             }
         }
 
-        public int getPriceOption(int lower, GolfCart cart, int price)
-        {
-            int option = reader.getInt();
-            int max = (cart.Money / price);
-            if (option < lower || option > max)
-            {
-                throw new TweetsieInputException("You do not have enough money to buy more than " + max);
-            }
-            else
-            {
-                return option;
-            }
-        }
-
         public bool loopUntilKeypress()
         {
             return reader.loopUntilKeyPress();

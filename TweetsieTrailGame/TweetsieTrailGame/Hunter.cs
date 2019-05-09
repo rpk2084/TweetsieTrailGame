@@ -34,11 +34,16 @@ namespace TweetsieTrailGame
 
         public void eat(RATIONS food)
         {
-            Health += (int)food;
+            Health += (food - RATIONS.LIGHT);
             if (Health > maxHealth)
             {
                 Health = maxHealth;
             }
+        }
+
+        public void starve()
+        {
+            Health -= 5;
         }
     }
 }

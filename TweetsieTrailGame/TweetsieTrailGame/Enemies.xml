@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Enemies>
+  <Enemy Name="CrackHead">
+    <Health>0</Health>
+    <Strength>80</Strength>
+    <Food>5</Food>
+    <ScoreValue>65</ScoreValue>
+  </Enemy>
+  <Enemy Name="Homelessman">
+    <Health>50</Health>
+    <Strength>50</Strength>
+    <Food>15</Food>
+    <ScoreValue>60</ScoreValue>
+  </Enemy>
+  <Enemy Name="BigChungus">
+    <Health>80</Health>
+    <Strength>65</Strength>
+    <Food>25</Food>
+    <ScoreValue>80</ScoreValue>
+  </Enemy>
+  <Enemy Name="Tweetsieman">
+    <Health>100</Health>
+    <Strength>95</Strength>
+    <Food>35</Food>
+    <ScoreValue>100</ScoreValue>
+  </Enemy>
+  <Enemy Name="RabidBunny">
+    <Health>15</Health>
+    <Strength>45</Strength>
+    <Food>15</Food>
+    <ScoreValue>40</ScoreValue>
+  </Enemy>
+  <Enemy Name="AnnoyedOldman">
+    <Health>10</Health>
+    <Strength>5</Strength>
+    <Food>5</Food>
+    <ScoreValue>10</ScoreValue>
+  </Enemy>
+</Enemies>

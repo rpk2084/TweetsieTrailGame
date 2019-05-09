@@ -9,18 +9,20 @@ namespace TweetsieTrailGame
     class TweetsieTrailGame
     {
         public static List<EnemyCreateInfo> enemyTypes;
+        public static Random rng = new Random();
 
         private GolfCart cart;
         private Days day;
         private int playerCount;
         private List<Hunter> hunters;
+        private Map gameMap;
         private RATIONS rations;
         private PACE pace;
         private int score;
         
 
 
-        public TweetsieTrailGame(int numPlayers)
+        public TweetsieTrailGame(int numPlayers, List<Location> map)
         {
             playerCount = numPlayers;
             hunters = new List<Hunter>();
@@ -28,6 +30,7 @@ namespace TweetsieTrailGame
             day = new Days();
             rations = RATIONS.FILLING;
             pace = PACE.SLOW;
+            gameMap = new Map(map);
         }
 
         public GolfCart Cart
@@ -74,11 +77,24 @@ namespace TweetsieTrailGame
             }
         }
 
+        public Map GameMap
+        {
+            get
+            {
+                return this.gameMap;
+            }
+            set
+            {
+                this.gameMap = value;
+            }
+        }
+
         public void addHunter(string name, HunterJobInfo jobInfo)
         {
             hunters.Add(new Hunter(jobInfo.Health, jobInfo.Strength, name, jobInfo.ScoreMultiplier));
             cart.Money += jobInfo.StartingMoney;
         }
+
 
         public EVENT_TYPE randomEvent()
         {
@@ -88,13 +104,14 @@ namespace TweetsieTrailGame
             int breakChance = 10;
             int fightChance = 10;
 
-            Random rng = new Random();
             List<string> availableToBreak = new List<string>();
             if (cart.Wheels > 0) availableToBreak.Add("wheel");
             if (cart.Axles > 0) availableToBreak.Add("axle");
             if (cart.Batteries > 0) availableToBreak.Add("battery");
 
-            if (availableToBreak.Count > 0 && rng.Next(0, 100) < breakChance)
+            int randomChoice = rng.Next(0, 100);
+
+            if (availableToBreak.Count > 0 && randomChoice < breakChance)
             {
                 switch (availableToBreak[rng.Next(0, availableToBreak.Count)])
                 {
@@ -112,7 +129,7 @@ namespace TweetsieTrailGame
                         break;
                 }
             }
-            else if (rng.Next(0, 100) < fightChance)
+            else if (randomChoice < fightChance + breakChance)
             {
                 e = EVENT_TYPE.FIGHT;
             }
@@ -120,21 +137,43 @@ namespace TweetsieTrailGame
             return e;
         }
         
-        public void travel()
+        public bool travel()
         {
-            //Need location class to be implemented before this can do anyting @Jarod Blazo
+            day.continueTravel();
+            GameMap.addDay();
+            bool arrived = GameMap.atLocation();
+            return arrived;
+            
+            
         }
 
-        public void updateStatus()
+        public List<Hunter> updateStatus()
         {
-            foreach(Hunter hunter in hunters)
+            List<Hunter> deadHunters = new List<Hunter>();
+            foreach (Hunter hunter in hunters)
             {
                 if(hunter.isAlive())
                 {
-                    hunter.eat(rations);
-                    cart.Food -= (int)rations;
+                    if (cart.Food > 0)
+                    {
+                        hunter.eat(rations);
+                        cart.Food -= (int)rations;
+                    }
+                    else
+                    {
+                        hunter.starve();
+                    }
+                }
+                else
+                {
+                    deadHunters.Add(hunter);
                 }
             }
+            foreach (Hunter deadHunter in deadHunters)
+            {
+                hunters.Remove(deadHunter);
+            }
+            return deadHunters;
         }
 
         private List<Hunter> getLiveHunters()
@@ -149,7 +188,6 @@ namespace TweetsieTrailGame
 
         public Fight createFight()
         {
-            Random rng = new Random();
             return new Fight(getLiveHunters(), TweetsieTrailGame.enemyTypes[rng.Next(0, TweetsieTrailGame.enemyTypes.Count)]);
         }
 
