@@ -137,12 +137,22 @@ namespace TweetsieTrailGame
             return e;
         }
         
-        public bool travel()
+        public bool travel(Func<Map, int> displayForkFunction)
         {
             day.continueTravel();
             GameMap.addDay();
-            bool arrived = GameMap.atLocation();
-            return arrived;
+            bool fork = GameMap.isFork();
+            if (fork == true)
+            {
+                int option = displayForkFunction(GameMap);
+                GameMap.inWildernessFork(option);
+            }
+            else
+            {
+                GameMap.inWilderness();
+            }
+            bool inWilderness = GameMap.inWilderness();
+            return inWilderness;
             
             
         }

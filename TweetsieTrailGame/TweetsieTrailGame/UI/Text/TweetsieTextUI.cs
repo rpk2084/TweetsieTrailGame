@@ -338,11 +338,15 @@ namespace TweetsieTrailGame
         {
             TextUIModel model = new TextUIModel();
             model.Header.Add("Day: " + day + "      " + "Terrain: " + Terrain.getTerrain());
-            model.Header.Add(hunters[0].Name + "'s health: " + hunters[0].Health);
-            model.Header.Add(hunters[1].Name + "'s health: " + hunters[1].Health);
-            model.Header.Add(hunters[2].Name + "'s health: " + hunters[2].Health);
+            foreach(Hunter hunter in hunters)
+            {
+                model.Header.Add(hunter.Name + "'s health: " + hunter.Health);
+            }
+            
+            //model.Header.Add(hunters[1].Name + "'s health: " + hunters[1].Health);
+            //model.Header.Add(hunters[2].Name + "'s health: " + hunters[2].Health);
             presenter.showTextUIModel(model);
-            System.Threading.Thread.Sleep(250);
+            System.Threading.Thread.Sleep(1000);
         }
 
         public int arrivalMenu(Map map)
@@ -361,6 +365,20 @@ namespace TweetsieTrailGame
             TextUIModel model = new TextUIModel();
             model.Header.Add("Congratulations, you won!");
             presenter.showTextUIModel(model);
+        }
+
+        public int displayFork(Map map)
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("You have reached a fork! Choose a direction");
+            Location currentLocation = map.MapList[map.CurrentLocation];
+            Location firstOption = map.MapList[currentLocation.Next];
+            Location secondOption = map.MapList[currentLocation.SecondNext];
+            model.Options.Add(firstOption.Name);
+            model.Options.Add(secondOption.Name);
+            int option = getPlayerOption(model);
+            return option;
+            
         }
     }
 
