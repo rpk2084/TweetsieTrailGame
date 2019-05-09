@@ -43,6 +43,14 @@ namespace TweetsieTrailGame
         public List<Location> loadLocations()
         {
             List<Location> locations = new List<Location>();
+            ObjectList objList = parser.parseFile("Locations");
+            //Location Distance    Stop? Breakchance     Next Second Next
+            int nameColumn = objList.HeaderRow.IndexOf("Location");
+            int distanceColumn = objList.HeaderRow.IndexOf("Distance");
+            int stopColumn = objList.HeaderRow.IndexOf("Stop?");
+            int breakColumn = objList.HeaderRow.IndexOf("BreakChance");
+            int nextColumn = objList.HeaderRow.IndexOf("Next");
+            int secondColumn = objList.HeaderRow.IndexOf("Distance");
         }
 
         public ScoreTable loadScoreTable()
