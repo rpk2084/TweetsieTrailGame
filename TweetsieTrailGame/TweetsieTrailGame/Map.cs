@@ -43,6 +43,29 @@ namespace TweetsieTrailGame
             }
         }
 
+        public List<Location> MapList
+        {
+            get
+            {
+                return this.mapList;
+            }
+            set
+            {
+                this.mapList = value;
+            }
+        }
+
+        public int CurrentLocation
+        {
+            get
+            {
+                return this.currentLocation;
+            }
+            set
+            {
+                this.currentLocation = value;
+            }
+        }
         public bool atLocation()
         {
             Location currentPlace = mapList[currentLocation];

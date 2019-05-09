@@ -345,7 +345,23 @@ namespace TweetsieTrailGame
             System.Threading.Thread.Sleep(250);
         }
 
-        public void 
+        public int arrivalMenu(Map map)
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("You have arrived at " + map.MapList[map.CurrentLocation] + ". What would you like to do?");
+            model.Options.Add("Continue Traveling");
+            model.Options.Add("Stop and shop");
+            model.InputPrompt = "Enter your choice>>";
+            int option = getPlayerOption(model);
+            return option;
+        }
+
+        public void winningMenu()
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("Congratulations, you won!");
+            presenter.showTextUIModel(model);
+        }
     }
 
     

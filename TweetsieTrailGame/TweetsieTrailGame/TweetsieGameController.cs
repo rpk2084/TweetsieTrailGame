@@ -200,9 +200,31 @@ namespace TweetsieTrailGame
                 }
                 if (inWilderness == false)
                 {
-                    gameState = GAME_STATE.
+                    if (game.GameMap.CurrentLocation == 15)
+                    {
+                        ui.winningMenu();
+                        break;
+                    }
+                    else
+                    {
+                        int option = ui.arrivalMenu(game.GameMap);
+                        switch (option)
+                        {
+                            case 1:
+                                gameState = GAME_STATE.GAME_STATE_TRAVELLING;
+                                break;
+                            case 2:
+                                gameState = GAME_STATE.GAME_STATE_SHOPPING;
+                                break;
+                        }
+                    }
+
                 }
-                continueTravel = inWilderness;
+                else if(inWilderness == true)
+                {
+                    continue;
+                }
+                
 
                 
             }
