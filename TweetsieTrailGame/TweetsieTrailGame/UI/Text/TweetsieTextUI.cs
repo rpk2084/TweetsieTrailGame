@@ -247,6 +247,27 @@ namespace TweetsieTrailGame
             presenter.showTextUIModel(fightWonModel);
             inputController.waitForKeyPress();
         }
+
+        public void showDead(List<Hunter> deadHunters)
+        {
+            TextUIModel model = new TextUIModel();
+            foreach(Hunter deadHunter in deadHunters)
+            {
+                model.Header.Add(deadHunter.Name + " has died");
+            }
+            model.InputPrompt = "Press any key to continue>>";
+            presenter.showTextUIModel(model);
+            inputController.waitForKeyPress();
+        }
+
+        public void showGameOver()
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("Game Over");
+            model.InputPrompt = "Press any key to return to the main menu>>";
+            presenter.showTextUIModel(model);
+            inputController.waitForKeyPress();
+        }
     }
 
     

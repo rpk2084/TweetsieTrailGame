@@ -127,16 +127,33 @@ namespace TweetsieTrailGame
             //Need location class to be implemented before this can do anyting @Jarod Blazo
         }
 
-        public void updateStatus()
+        public List<Hunter> updateStatus()
         {
-            foreach(Hunter hunter in hunters)
+            List<Hunter> deadHunters = new List<Hunter>();
+            foreach (Hunter hunter in hunters)
             {
                 if(hunter.isAlive())
                 {
-                    hunter.eat(rations);
-                    cart.Food -= (int)rations;
+                    if (cart.Food > 0)
+                    {
+                        hunter.eat(rations);
+                        cart.Food -= (int)rations;
+                    }
+                    else
+                    {
+                        hunter.starve();
+                    }
+                }
+                else
+                {
+                    deadHunters.Add(hunter);
                 }
             }
+            foreach (Hunter deadHunter in deadHunters)
+            {
+                hunters.Remove(deadHunter);
+            }
+            return deadHunters;
         }
 
         private List<Hunter> getLiveHunters()
