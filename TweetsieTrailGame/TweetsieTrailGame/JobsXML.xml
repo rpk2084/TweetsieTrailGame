@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Jobs>
+  <Job Name="Walker">
+    <Health>20</Health>
+    <Strength>25</Strength>
+    <Mulyiplier>1.5</Mulyiplier>
+    <StartingMoney>500</StartingMoney>
+  </Job>
+  <Job Name="Runner">
+    <Health>40</Health>
+    <Strength>45</Strength>
+    <Mulyiplier>1.25</Mulyiplier>
+    <StartingMoney>400</StartingMoney>
+  </Job>
+  <Job Name="Cyclist">
+    <Health>50</Health>
+    <Strength>65</Strength>
+    <Mulyiplier>1.15</Mulyiplier>
+    <StartingMoney>350</StartingMoney>
+  </Job>
+  <Job Name="Homelessman">
+    <Health>65</Health>
+    <Strength>85</Strength>
+    <Mulyiplier>1.00</Mulyiplier>
+    <StartingMoney>300</StartingMoney>
+  </Job>
+</Jobs>
