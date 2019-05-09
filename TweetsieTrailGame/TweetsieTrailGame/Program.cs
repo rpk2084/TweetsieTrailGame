@@ -24,6 +24,7 @@ namespace TweetsieTrailGame
             TweetsieFileManager fileManager = new TweetsieFileManager(fileParser, formatter);
 
             TweetsieUI ui = new TweetsieUI(presenter, controller);
+            //SpanishTextUI ui = new SpanishTextUI(presenter, controller);
 
             TweetsieGameController game = new TweetsieGameController(ui, fileManager, 3);
 
