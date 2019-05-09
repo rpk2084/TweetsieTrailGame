@@ -49,6 +49,7 @@
     <Compile Include="Fight.cs" />
     <Compile Include="FileManager\DummyFileManager.cs" />
     <Compile Include="FileManager\IFileManager.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Pace.cs" />
     <Compile Include="Rations.cs" />
     <Compile Include="UI\Text\ConsoleInputReader.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="UI\Text\TweetsieTextUI.cs" />
     <Compile Include="TweetsieTrailGame.cs" />
     <Compile Include="TweetsieGameController.cs" />
-    <Compile Include="Weather.cs" />
+    <Compile Include="Terrain.cs" />
     <Compile Include="GolfCart.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

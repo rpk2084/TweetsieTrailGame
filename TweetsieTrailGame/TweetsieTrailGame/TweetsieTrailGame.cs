@@ -15,13 +15,14 @@ namespace TweetsieTrailGame
         private Days day;
         private int playerCount;
         private List<Hunter> hunters;
+        private Map gameMap;
         private RATIONS rations;
         private PACE pace;
         private int score;
         
 
 
-        public TweetsieTrailGame(int numPlayers)
+        public TweetsieTrailGame(int numPlayers, List<Location> map)
         {
             playerCount = numPlayers;
             hunters = new List<Hunter>();
@@ -29,6 +30,7 @@ namespace TweetsieTrailGame
             day = new Days();
             rations = RATIONS.FILLING;
             pace = PACE.SLOW;
+            gameMap = new Map(map);
         }
 
         public GolfCart Cart
@@ -75,11 +77,24 @@ namespace TweetsieTrailGame
             }
         }
 
+        public Map GameMap
+        {
+            get
+            {
+                return this.gameMap;
+            }
+            set
+            {
+                this.gameMap = value;
+            }
+        }
+
         public void addHunter(string name, HunterJobInfo jobInfo)
         {
             hunters.Add(new Hunter(jobInfo.Health, jobInfo.Strength, name, jobInfo.ScoreMultiplier));
             cart.Money += jobInfo.StartingMoney;
         }
+
 
         public EVENT_TYPE randomEvent()
         {
@@ -122,9 +137,13 @@ namespace TweetsieTrailGame
             return e;
         }
         
-        public void travel()
+        public bool travel()
         {
-            //Need location class to be implemented before this can do anyting @Jarod Blazo
+            day.continueTravel();
+            bool arrived = GameMap.atLocation();
+            return arrived;
+            
+            
         }
 
         public List<Hunter> updateStatus()

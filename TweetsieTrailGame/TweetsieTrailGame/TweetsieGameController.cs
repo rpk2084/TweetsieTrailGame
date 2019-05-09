@@ -80,7 +80,20 @@ namespace TweetsieTrailGame
 
         private void createGame()
         {
-            game = new TweetsieTrailGame(playerCount);
+            List<Location> theMap = loadLocation();
+            game = new TweetsieTrailGame(playerCount, theMap);
+        }
+
+        private List<Location> loadLocation()
+        {
+            List<Location> locationList = fileManager.loadLocations();
+            return locationList;
+
+        }
+
+        private void checkLocation()
+        {
+
         }
 
         private void openingMenu()
@@ -173,7 +186,7 @@ namespace TweetsieTrailGame
                     }
                 }
                 //this needs to be updated to return a location and handle the location once the location class is created
-                game.travel();
+                bool arrived = game.travel();
                 List<Hunter> deadHunters = game.updateStatus();
                 if(deadHunters.Count > 0)
                 {
