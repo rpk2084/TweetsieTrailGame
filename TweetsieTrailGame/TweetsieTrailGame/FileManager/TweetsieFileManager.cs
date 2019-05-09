@@ -51,6 +51,21 @@ namespace TweetsieTrailGame
             int breakColumn = objList.HeaderRow.IndexOf("BreakChance");
             int nextColumn = objList.HeaderRow.IndexOf("Next");
             int secondColumn = objList.HeaderRow.IndexOf("Distance");
+
+            foreach(List<string> loc in objList.ObjectRows)
+            {
+                locations.Add(
+                    new Location(
+                        loc[nameColumn],
+                        int.Parse(loc[distanceColumn]),
+                        bool.Parse(loc[stopColumn]),
+                        int.Parse(loc[breakColumn]),
+                        int.Parse(loc[nextColumn]),
+                        int.Parse(loc[secondColumn])
+                        )
+                    );
+            }
+            return locations;
         }
 
         public ScoreTable loadScoreTable()
