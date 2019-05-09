@@ -7,6 +7,6 @@ namespace TweetsieTrailGame
 {
     interface IFileFormatter
     {
-        void saveFile(ObjectList objectList);
+        void saveFile(ObjectList objectList, string path);
     }
 }

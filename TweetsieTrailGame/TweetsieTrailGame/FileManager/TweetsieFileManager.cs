@@ -116,7 +116,7 @@ namespace TweetsieTrailGame
                 objList.ObjectRows[i].Add(scores.Scores[i].Value.ToString());
             }
 
-            formatter.saveFile(objList);
+            formatter.saveFile(objList, "Scores");
         }
     }
 }
