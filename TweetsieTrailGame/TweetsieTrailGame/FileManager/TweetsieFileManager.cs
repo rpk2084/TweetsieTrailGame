@@ -19,18 +19,18 @@ namespace TweetsieTrailGame
         public List<EnemyCreateInfo> loadEnemyTypes()
         {
             List<EnemyCreateInfo> enemyCreateInfos = new List<EnemyCreateInfo>();
-            ObjectList objList = parser.parseFile("Enemies");
+            ObjectList objList = parser.parseFile("../../Enemies");
 
-            int healthColumn = objList.HeaderRow.IndexOf("Health");
-            int strengthColumn = objList.HeaderRow.IndexOf("Strength");
-            int nameColumn = objList.HeaderRow.IndexOf("Name");
-            int foodColumn = objList.HeaderRow.IndexOf("Food");
-            int scoreColumn = objList.HeaderRow.IndexOf("ScoreValue");
+            //int healthColumn = objList.HeaderRow.IndexOf("Health");
+            //int strengthColumn = objList.HeaderRow.IndexOf("Strength");
+            //int nameColumn = objList.HeaderRow.IndexOf("Name");
+            //int foodColumn = objList.HeaderRow.IndexOf("Food");
+            //int scoreColumn = objList.HeaderRow.IndexOf("ScoreValue");
 
             foreach(List<string> enemy in objList.ObjectRows)
             {
-                enemyCreateInfos.Add(new EnemyCreateInfo(enemy[nameColumn], int.Parse(enemy[healthColumn]), int.Parse(enemy[strengthColumn]),
-                    int.Parse(enemy[foodColumn]), int.Parse(enemy[scoreColumn])));
+                enemyCreateInfos.Add(new EnemyCreateInfo(enemy[0], int.Parse(enemy[1]), int.Parse(enemy[2]),
+                    int.Parse(enemy[3]), int.Parse(enemy[4])));
             }
             return enemyCreateInfos;
         }
@@ -38,22 +38,22 @@ namespace TweetsieTrailGame
         public List<HunterJobInfo> loadHunterJobsInfos()
         {
             List<HunterJobInfo> jobInfos = new List<HunterJobInfo>();
-            ObjectList objList = parser.parseFile("Job");
+            ObjectList objList = parser.parseFile("../../Jobs");
 
-            int nameColumn = objList.HeaderRow.IndexOf("Name");
-            int healthColumn = objList.HeaderRow.IndexOf("Health");
-            int strengthColumn = objList.HeaderRow.IndexOf("Strength");
-            int multColumn = objList.HeaderRow.IndexOf("ScoreMultiplier");
-            int moneyColumn = objList.HeaderRow.IndexOf("StartingMoney");
+            //int nameColumn = objList.HeaderRow.IndexOf("Name");
+            //int healthColumn = objList.HeaderRow.IndexOf("Health");
+            //int strengthColumn = objList.HeaderRow.IndexOf("Strength");
+            //int multColumn = objList.HeaderRow.IndexOf("ScoreMultiplier");
+            //int moneyColumn = objList.HeaderRow.IndexOf("StartingMoney");
 
             foreach(List<string> obj in objList.ObjectRows)
             {
                 jobInfos.Add(new HunterJobInfo(
-                       obj[nameColumn],
-                       int.Parse(obj[healthColumn]),
-                       int.Parse(obj[strengthColumn]),
-                       double.Parse(obj[multColumn]),
-                       int.Parse(obj[moneyColumn])
+                       obj[0],
+                       int.Parse(obj[1]),
+                       int.Parse(obj[2]),
+                       double.Parse(obj[3]),
+                       int.Parse(obj[4])
                     )
                 );
             }
@@ -63,25 +63,26 @@ namespace TweetsieTrailGame
         public List<Location> loadLocations()
         {
             List<Location> locations = new List<Location>();
-            ObjectList objList = parser.parseFile("Locations");
+            ObjectList objList = parser.parseFile("../../Locations");
             //Location Distance    Stop? Breakchance     Next Second Next
-            int nameColumn = objList.HeaderRow.IndexOf("Location");
-            int distanceColumn = objList.HeaderRow.IndexOf("Distance");
-            int stopColumn = objList.HeaderRow.IndexOf("Stop?");
-            int breakColumn = objList.HeaderRow.IndexOf("BreakChance");
-            int nextColumn = objList.HeaderRow.IndexOf("Next");
-            int secondColumn = objList.HeaderRow.IndexOf("Distance");
+            //int nameColumn = objList.HeaderRow.IndexOf("Location");
+            //int distanceColumn = objList.HeaderRow.IndexOf("Distance");
+            //int stopColumn = objList.HeaderRow.IndexOf("Stop?");
+            //int breakColumn = objList.HeaderRow.IndexOf("BreakChance");
+            //int nextColumn = objList.HeaderRow.IndexOf("Next");
+            //int secondColumn = objList.HeaderRow.IndexOf("Distance");
 
             foreach(List<string> loc in objList.ObjectRows)
             {
+                Console.WriteLine(loc[0] + " "  + loc.Count);
                 locations.Add(
                     new Location(
-                        loc[nameColumn],
-                        int.Parse(loc[distanceColumn]),
-                        bool.Parse(loc[stopColumn]),
-                        int.Parse(loc[breakColumn]),
-                        int.Parse(loc[nextColumn]),
-                        int.Parse(loc[secondColumn])
+                        loc[0],
+                        int.Parse(loc[1]),
+                        bool.Parse(loc[2]),
+                        int.Parse(loc[3]),
+                        int.Parse(loc[4]),
+                        int.Parse(loc[5])
                         )
                     );
             }
@@ -91,13 +92,14 @@ namespace TweetsieTrailGame
         public ScoreTable loadScoreTable()
         {
             List<Score> scores = new List<Score>();
-            ObjectList objList = parser.parseFile("Scores");
+            ObjectList objList = parser.parseFile("../../Scores");
 
-            int nameColumn = objList.HeaderRow.IndexOf("Name");
-            int valueColumn = objList.HeaderRow.IndexOf("Score");
+            //int nameColumn = objList.HeaderRow.IndexOf("Name");
+            //int valueColumn = objList.HeaderRow.IndexOf("Score");
+
             foreach(List<string> score in objList.ObjectRows)
             {
-                scores.Add(new Score(score[nameColumn], int.Parse(score[valueColumn])));
+                scores.Add(new Score(score[0], int.Parse(score[1])));
             }
             ScoreTable table = new ScoreTable(scores);
             table.sort();

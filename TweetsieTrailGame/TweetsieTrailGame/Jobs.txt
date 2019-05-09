@@ -1,5 +1,5 @@
-﻿Name			Health			Strength			Multiplier			StartingMoney
-Walker			20				25					1.5					500
-Runner			40				45					1.25				400
-Cyclist			50				65					1.15				350
-Homlessman		65				85					1.00				300
+﻿Name,Health,Strength,Multiplier,StartingMoney
+Walker,20,25,1.5,500
+Runner,40,45,1.25,400
+Cyclist,50,65,1.15,350
+Homlessman,65,85,1.00,300

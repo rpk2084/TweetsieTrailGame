@@ -87,6 +87,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Jobs.txt" />
     <Content Include="Scores.txt" />
     <Content Include="Locations.txt" />
     <Content Include="Enemies.txt" />

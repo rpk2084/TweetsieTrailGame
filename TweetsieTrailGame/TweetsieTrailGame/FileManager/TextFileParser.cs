@@ -22,7 +22,7 @@ namespace TweetsieTrailGame
 
             ObjectList objList = new ObjectList();
 
-            string[] headerRow = lines[0].Split(null);
+            string[] headerRow = lines[0].Split(new[] { ',' }, StringSplitOptions.None);
             foreach (string entry in headerRow)
             {
                 objList.HeaderRow.Add(entry);
@@ -30,11 +30,11 @@ namespace TweetsieTrailGame
 
             for(int i = 1; i < lines.Length; ++i)
             {
-                string[] objRow = lines[0].Split(null);
+                string[] objRow = lines[i].Split(new[] { ',' }, StringSplitOptions.None);
                 objList.ObjectRows.Add(new List<string>());
-                foreach (string entry in headerRow)
+                foreach (string entry in objRow)
                 {
-                    objList.ObjectRows[i].Add(entry);
+                    objList.ObjectRows[i - 1].Add(entry);
                 }
             }
 

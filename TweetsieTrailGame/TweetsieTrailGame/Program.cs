@@ -15,7 +15,13 @@ namespace TweetsieTrailGame
             ConsoleInputReader reader = new ConsoleInputReader();
             TextInputController controller = new TextInputController(reader);
 
-            DummyFileManager fileManager = new DummyFileManager();
+            FileWriter writer = new FileWriter();
+            FileFormatter formatter = new FileFormatter(writer);
+
+            FileReader fileReader = new FileReader();
+            TextFileParser fileParser = new TextFileParser(fileReader);
+
+            TweetsieFileManager fileManager = new TweetsieFileManager(fileParser, formatter);
 
             TweetsieUI ui = new TweetsieUI(presenter, controller);
 

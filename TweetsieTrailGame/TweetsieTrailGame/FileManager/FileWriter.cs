@@ -3,7 +3,7 @@ using System.IO;
 
 namespace TweetsieTrailGame
 {
-    class fileWriter : IFileWriter
+    class FileWriter : IFileWriter
     {
         public void writeFile(string sFile, string sContent)
         {
