@@ -19,14 +19,14 @@ namespace TweetsieTrailGame
             string fileContent = "";
             foreach(string entry in objectList.HeaderRow)
             {
-                fileContent += entry + "\t";
+                fileContent += entry + ",";
             }
             fileContent += "\n";
             foreach(List<string> obj in objectList.ObjectRows)
             {
                 foreach (string entry in obj)
                 {
-                    fileContent += entry + "\t";
+                    fileContent += entry + ",";
 
                     fileContent += "\n";
                 }
