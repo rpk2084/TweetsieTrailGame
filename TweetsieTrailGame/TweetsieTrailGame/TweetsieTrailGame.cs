@@ -152,8 +152,8 @@ namespace TweetsieTrailGame
         {
             day.continueTravel();
             int distancePenalty = 0;
-            if (cart.Wheels < 4) distancePenalty += 4 - cart.Wheels;
-            if (cart.Axles < 2) distancePenalty += 2 - cart.Axles;
+            if (cart.Wheels < 4) distancePenalty += 1;
+            if (cart.Axles < 2) distancePenalty += 1;
             if (cart.Batteries < 1) distancePenalty += 1;
             GameMap.addDay(distancePenalty);
             bool fork = GameMap.isFork();

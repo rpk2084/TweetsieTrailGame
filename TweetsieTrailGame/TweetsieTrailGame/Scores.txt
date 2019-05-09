@@ -1,5 +1,6 @@
-﻿Name,Score
-Ryan,10
-Drew,5
-Sam,4
-Jarod,3
+Name,Score,
+Ryan,62,
+Ryan,10,
+Drew,5,
+Sam,4,
+Jarod,3,
