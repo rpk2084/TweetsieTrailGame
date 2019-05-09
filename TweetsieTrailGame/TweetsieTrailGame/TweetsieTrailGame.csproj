@@ -77,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Locations.txt" />
+    <Content Include="TextFile1.txt" />
+    <Content Include="LocationsXML.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
