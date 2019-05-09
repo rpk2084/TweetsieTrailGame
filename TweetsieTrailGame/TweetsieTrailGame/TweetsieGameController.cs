@@ -83,6 +83,18 @@ namespace TweetsieTrailGame
             game = new TweetsieTrailGame(playerCount);
         }
 
+        private void loadLocation()
+        {
+            List<Location> locationList = fileManager.loadLocations();
+            Map gameMap = new Map(locationList);
+
+        }
+
+        private void checkLocation()
+        {
+
+        }
+
         private void openingMenu()
         {
             this.gameState = ui.mainMenu();

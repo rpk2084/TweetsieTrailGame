@@ -5,24 +5,24 @@ using System.Text;
 
 namespace TweetsieTrailGame
 {
-    class Weather
+    class Terrain
     {
 
         //getWeather just uses the built in random class to return a number 1-4. This can later be used to affect health
-        public static String getWeather()
+        public static String getTraining()
         {
             Random rnd = new Random();
             int currentState = rnd.Next(1, 5);
             switch (currentState)
             {
                 case 1:
-                    return "Great";
+                    return "Flat";
                 case 2:
-                    return "Fair";
+                    return "Bumpy";
                 case 3:
-                    return "Poor";
+                    return "Hilly";
                 case 4:
-                    return "Very Poor";
+                    return "Treacherous";
                 default:
                     return "RandInt Error";
 
