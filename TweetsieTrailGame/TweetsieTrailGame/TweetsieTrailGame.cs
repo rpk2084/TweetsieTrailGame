@@ -112,7 +112,7 @@ namespace TweetsieTrailGame
             EVENT_TYPE e = EVENT_TYPE.NO_EVENT;
 
             //These should come from elsewhere eventually
-            int breakChance = 10;
+            int breakChance = 10 + gameMap.MapList[gameMap.CurrentLocation].BreakChance;
             int fightChance = 10;
 
             List<string> availableToBreak = new List<string>();
@@ -151,7 +151,11 @@ namespace TweetsieTrailGame
         public bool travel(Func<Map, int> displayForkFunction)
         {
             day.continueTravel();
-            GameMap.addDay();
+            int distancePenalty = 0;
+            if (cart.Wheels < 4) distancePenalty += 4 - cart.Wheels;
+            if (cart.Axles < 2) distancePenalty += 2 - cart.Axles;
+            if (cart.Batteries < 1) distancePenalty += 1;
+            GameMap.addDay(distancePenalty);
             bool fork = GameMap.isFork();
             if (fork == true)
             {

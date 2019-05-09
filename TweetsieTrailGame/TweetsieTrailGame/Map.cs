@@ -149,28 +149,28 @@ namespace TweetsieTrailGame
                 return true;
             }
         }
-        public void calculateDailyDistance()
+        public void calculateDailyDistance(int distancePenalty)
         {
             switch (Pace)
             {
                 case 1:
-                    Distance = Distance + 10;
+                    Distance = Distance + 10 - distancePenalty;
                     break;
                 case 2:
-                    Distance = Distance + 25;
+                    Distance = Distance + 25 - distancePenalty;
                     break;
                 case 3:
-                    Distance = Distance + 30;
+                    Distance = Distance + 30 - distancePenalty;
                     break;
                 case 4:
-                    Distance = Distance + 35;
+                    Distance = Distance + 35 - distancePenalty;
                     break;
             }
         }
 
-        public void addDay()
+        public void addDay(int distancePenalty)
         {
-            calculateDailyDistance();
+            calculateDailyDistance(distancePenalty);
         }
     }
 }
