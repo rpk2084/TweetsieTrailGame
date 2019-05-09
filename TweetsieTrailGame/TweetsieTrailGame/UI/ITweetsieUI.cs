@@ -21,6 +21,6 @@ namespace TweetsieTrailGame
         bool ongoingFightMenu(Fight fight);
         void playerWonFightMenu(Enemy enemy);
         void travelMenu(GolfCart cart, List<Hunter> hunterList, Map map, Days day);
-        void arrivalMenu(Map map)
+        void arrivalMenu(Map map);
     }
 }
