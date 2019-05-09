@@ -152,9 +152,6 @@ namespace TweetsieTrailGame
             {
                 return GameMap.inWilderness();
             }
-            
-            
-            
         }
 
         public List<Hunter> updateStatus()

@@ -208,15 +208,10 @@ namespace TweetsieTrailGame
                     }
                     else
                     {
-                        if (game.GameMap.MapList[game.GameMap.CurrentLocation].SecondNext != 0)
-                        {
-
-                        }
                         int option = ui.arrivalMenu(game.GameMap);
                         switch (option)
                         {
                             case 1:
-                                gameState = GAME_STATE.GAME_STATE_TRAVELLING;
                                 break;
                             case 2:
                                 shopMenu();
@@ -224,13 +219,10 @@ namespace TweetsieTrailGame
                         }
                     }
                 }
-                else if(inWilderness == true)
+                else
                 {
                     continue;
                 }
-                
-
-                
             }
             //ui.continueTravel(game.Day);
             //gameState = GAME_STATE.GAME_STATE_QUIT;
