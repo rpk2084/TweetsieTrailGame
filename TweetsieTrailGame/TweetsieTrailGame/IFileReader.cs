@@ -1,7 +1,7 @@
  using System;
  using System.IO;
 
- namespace TweetsieTrail
+ namespace TweetsieTrailGame
  {
 
  interface IFileReader
