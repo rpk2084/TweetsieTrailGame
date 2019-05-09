@@ -400,6 +400,18 @@ namespace TweetsieTrailGame
             presenter.showTextUIModel(model);
             inputController.waitForKeyPress();
         }
+        public void showScores(ScoreTable table)
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("Puntuaciones:");
+            foreach (Score score in table.Scores)
+            {
+                model.Options.Add(score.Name + "\t" + score.Value);
+            }
+            model.InputPrompt = "Pulsa cualquier botón para volver al menú principal.";
+            presenter.showTextUIModel(model);
+            inputController.waitForKeyPress();
+        }
     }
 }
 
