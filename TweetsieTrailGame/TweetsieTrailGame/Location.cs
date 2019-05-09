@@ -12,14 +12,16 @@ namespace TweetsieTrailGame
         private bool stop;
         private int breakChance;
         private int next;
+        private int secondNext;
 
-        public Location(string sName, int sDistance, bool sStop, int sBreakChance, int sNext)
+        public Location(string sName, int sDistance, bool sStop, int sBreakChance)
         {
             this.name = sName;
             this.distance = sDistance;
             this.stop = sStop;
             this.breakChance = sBreakChance;
-            this.next = sNext;
+            this.next = null;
+            this.secondNext = null;
         }
 
         public string Name
@@ -63,16 +65,30 @@ namespace TweetsieTrailGame
                 this.breakChance = value;
             }
         }
+
         public int Next
         {
             get
             {
-                return this.next;
+                return this.Next;
             }
             set
             {
-                this.next = value;
+                this.Next = value;
             }
         }
+
+        public int SecondNext
+        {
+            get
+            {
+                return this.secondNext;
+            }
+            set
+            {
+                this.secondNext = value;
+            }
+        }
+
     }
 }

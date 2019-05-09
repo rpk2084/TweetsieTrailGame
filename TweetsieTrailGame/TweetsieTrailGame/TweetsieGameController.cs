@@ -88,7 +88,17 @@ namespace TweetsieTrailGame
             }
             gameState = GAME_STATE.GAME_STATE_SHOPPING;
         }
+        private void loadLocation()
+        {
+            List<Location> locationList = fileManager.loadLocations();
+            Map gameMap = new Map(locationList);
+            
+        }
 
+        private void checkLocation()
+        {
+
+        }
         //private HunterJobInfo createPlayer()
         //{
         //    String name = getPlayerName();
@@ -160,8 +170,12 @@ namespace TweetsieTrailGame
                     }
                 }
                 //this needs to be updated to return a location and handle the location once the location class is created
-                game.travel();
+                bool arrivedAtLocation = game.travel();
                 game.updateStatus();
+                if (arrivedAtLocation)
+                {
+
+                }
                 
             }
             //ui.continueTravel(game.Day);
