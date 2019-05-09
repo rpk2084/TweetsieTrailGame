@@ -65,7 +65,6 @@ namespace TweetsieTrailGame
         public void continueTravel()
         {
             addDay();
-            System.Threading.Thread.Sleep(250);
         }
     }
 }

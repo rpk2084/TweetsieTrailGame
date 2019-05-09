@@ -333,6 +333,19 @@ namespace TweetsieTrailGame
             presenter.showTextUIModel(model);
             inputController.waitForKeyPress();
         }
+
+        public void travelMenu(GolfCart cart, List<Hunter> hunters, Map map, Days day)
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("Day: " + day + "      " + "Terrain: " + Terrain.getTerrain());
+            model.Header.Add(hunters[0].Name + "'s health: " + hunters[0].Health);
+            model.Header.Add(hunters[1].Name + "'s health: " + hunters[1].Health);
+            model.Header.Add(hunters[2].Name + "'s health: " + hunters[2].Health);
+            presenter.showTextUIModel(model);
+            System.Threading.Thread.Sleep(250);
+        }
+
+        public void 
     }
 
     

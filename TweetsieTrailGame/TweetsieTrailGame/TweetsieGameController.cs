@@ -165,7 +165,8 @@ namespace TweetsieTrailGame
         {
             bool continueTravel = true;
             while(continueTravel)
-            {
+            { 
+                ui.travelMenu(game.Cart, game.Hunters, game.GameMap, game.Day);
                 EVENT_TYPE e = game.randomEvent();
                 if(e != EVENT_TYPE.NO_EVENT)
                 {
@@ -186,7 +187,7 @@ namespace TweetsieTrailGame
                     }
                 }
                 //this needs to be updated to return a location and handle the location once the location class is created
-                bool arrived = game.travel();
+                bool inWilderness = game.travel();
                 List<Hunter> deadHunters = game.updateStatus();
                 if(deadHunters.Count > 0)
                 {
@@ -194,9 +195,15 @@ namespace TweetsieTrailGame
                     if(game.Hunters.Count == 0)
                     {
                         gameState = GAME_STATE.GAME_STATE_GAME_OVER;
-                        continueTravel = false;
+                        break;
                     }
                 }
+                if (inWilderness == false)
+                {
+                    gameState = GAME_STATE.
+                }
+                continueTravel = inWilderness;
+
                 
             }
             //ui.continueTravel(game.Day);

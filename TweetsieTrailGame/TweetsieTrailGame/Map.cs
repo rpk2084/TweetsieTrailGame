@@ -51,11 +51,11 @@ namespace TweetsieTrailGame
             {
                 Distance = nextPlace.Distance;
                 currentLocation = currentPlace.Next;
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
            
         }

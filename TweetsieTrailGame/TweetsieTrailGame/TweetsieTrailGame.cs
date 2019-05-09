@@ -140,6 +140,7 @@ namespace TweetsieTrailGame
         public bool travel()
         {
             day.continueTravel();
+            GameMap.addDay();
             bool arrived = GameMap.atLocation();
             return arrived;
             
