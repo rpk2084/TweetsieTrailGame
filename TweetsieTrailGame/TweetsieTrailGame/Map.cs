@@ -154,7 +154,7 @@ namespace TweetsieTrailGame
             switch (Pace)
             {
                 case 1:
-                    Distance = Distance + 20;
+                    Distance = Distance + 10;
                     break;
                 case 2:
                     Distance = Distance + 25;
