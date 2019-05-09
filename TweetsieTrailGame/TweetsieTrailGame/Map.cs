@@ -66,21 +66,88 @@ namespace TweetsieTrailGame
                 this.currentLocation = value;
             }
         }
-        public bool atLocation()
+        public bool inWildernessFork(int option)
         {
             Location currentPlace = mapList[currentLocation];
-            Location nextPlace = mapList[currentPlace.Next];
-            if (Distance >= nextPlace.Distance)
+            switch (option)
             {
-                Distance = nextPlace.Distance;
-                currentLocation = currentPlace.Next;
+                case 1:
+                    if (currentPlace.Next != 15)
+                    {
+                        Location nextPlace = mapList[currentPlace.Next];
+                        if (Distance >= nextPlace.Distance)
+                        {
+                            Distance = nextPlace.Distance;
+                            currentLocation = currentPlace.Next;
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        Distance = currentPlace.Distance;
+                        return false;
+                    }
+                case 2:
+                    if (currentPlace.SecondNext != 15)
+                    {
+                        Location nextPlace = mapList[currentPlace.SecondNext];
+                        if (Distance >= nextPlace.Distance)
+                        {
+                            Distance = nextPlace.Distance;
+                            currentLocation = currentPlace.SecondNext;
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
+                    return true;
+            }
+        }
+        public bool inWilderness()
+        {
+            Location currentPlace = mapList[currentLocation];
+            if (currentPlace.Next != 15)
+            {
+                Location nextPlace = mapList[currentPlace.Next];
+                if (Distance >= nextPlace.Distance)
+                {
+                    Distance = nextPlace.Distance;
+                    currentLocation = currentPlace.Next;
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public bool isFork()
+        {
+            if (MapList[CurrentLocation].SecondNext == 0)
+            {
                 return false;
             }
             else
             {
                 return true;
             }
-           
         }
         public void calculateDailyDistance()
         {

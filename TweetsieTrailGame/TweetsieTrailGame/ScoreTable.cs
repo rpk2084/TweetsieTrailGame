@@ -51,6 +51,7 @@ namespace TweetsieTrailGame
         public void addScore(string newName, int newScore)
         {
             Scores.Add(new Score(newName, newScore));
+            sort();
             
         }
 

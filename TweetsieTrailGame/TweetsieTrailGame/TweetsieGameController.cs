@@ -187,7 +187,7 @@ namespace TweetsieTrailGame
                     }
                 }
                 //this needs to be updated to return a location and handle the location once the location class is created
-                bool inWilderness = game.travel();
+                bool inWilderness = game.travel(ui.displayFork);
                 List<Hunter> deadHunters = game.updateStatus();
                 if(deadHunters.Count > 0)
                 {
@@ -200,9 +200,13 @@ namespace TweetsieTrailGame
                 }
                 if (inWilderness == false)
                 {
-                    if (game.GameMap.CurrentLocation == 15)
+                    if (game.GameMap.CurrentLocation == 14)
                     {
                         ui.winningMenu();
+                        string name = ui.askName();
+                        ScoreTable table = fileManager.loadScoreTable();
+                        table.addScore(name, game.Score);
+                        gameState = GAME_STATE.GAME_STATE_SCORES;
                         break;
                     }
                     else
@@ -211,22 +215,17 @@ namespace TweetsieTrailGame
                         switch (option)
                         {
                             case 1:
-                                gameState = GAME_STATE.GAME_STATE_TRAVELLING;
                                 break;
                             case 2:
-                                gameState = GAME_STATE.GAME_STATE_SHOPPING;
+                                shopMenu();
                                 break;
                         }
                     }
-
                 }
-                else if(inWilderness == true)
+                else
                 {
                     continue;
                 }
-                
-
-                
             }
             //ui.continueTravel(game.Day);
             //gameState = GAME_STATE.GAME_STATE_QUIT;

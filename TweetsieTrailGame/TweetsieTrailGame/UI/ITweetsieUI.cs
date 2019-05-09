@@ -23,5 +23,8 @@ namespace TweetsieTrailGame
         void travelMenu(GolfCart cart, List<Hunter> hunterList, Map map, Days day);
         int arrivalMenu(Map map);
         void winningMenu();
+        int displayFork(Map map);
+        string askName();
+        void waitForKey();
     }
 }

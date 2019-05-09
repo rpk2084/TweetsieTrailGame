@@ -88,6 +88,17 @@ namespace TweetsieTrailGame
                 this.gameMap = value;
             }
         }
+        public int Score
+        {
+            get
+            {
+                return this.score;
+            }
+            set
+            {
+                this.score = value;
+            }
+        }
 
         public void addHunter(string name, HunterJobInfo jobInfo)
         {
@@ -137,14 +148,21 @@ namespace TweetsieTrailGame
             return e;
         }
         
-        public bool travel()
+        public bool travel(Func<Map, int> displayForkFunction)
         {
             day.continueTravel();
             GameMap.addDay();
-            bool arrived = GameMap.atLocation();
-            return arrived;
-            
-            
+            bool fork = GameMap.isFork();
+            if (fork == true)
+            {
+                int option = displayForkFunction(GameMap);
+                return GameMap.inWildernessFork(option);
+
+            }
+            else
+            {
+                return GameMap.inWilderness();
+            }
         }
 
         public List<Hunter> updateStatus()

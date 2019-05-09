@@ -90,5 +90,10 @@ namespace TweetsieTrailGame
             }
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }
