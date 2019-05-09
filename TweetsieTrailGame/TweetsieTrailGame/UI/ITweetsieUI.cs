@@ -15,6 +15,8 @@ namespace TweetsieTrailGame
         void breakAxleNotification(int remainingAxles);
         void breakWheelNotification(int remainingWheels);
         void breakBatteryNotification(int remainingBatteries);
+        void showDead(List<Hunter> deadHunters);
+        void showGameOver();
         //fight menus
         bool ongoingFightMenu(Fight fight);
         void playerWonFightMenu(Enemy enemy);

@@ -26,6 +26,7 @@ namespace TweetsieTrailGame
 
         //Declare entities
         private GAME_STATE gameState;
+        private int playerCount;
         private TweetsieTrailGame game;
 
         //The constructor is the only part of this class that should be public
@@ -34,7 +35,8 @@ namespace TweetsieTrailGame
             ui = tweetsieUI;
             this.fileManager = fileManager;
             TweetsieTrailGame.enemyTypes = fileManager.loadEnemyTypes();
-            game = new TweetsieTrailGame(playerCount);
+            this.playerCount = playerCount;
+            
 
             //start the main loop
             gameState = GAME_STATE.GAME_STATE_MAIN_MENU;
@@ -66,9 +68,19 @@ namespace TweetsieTrailGame
                     case GAME_STATE.GAME_STATE_TRAVELLING:
                         travelLoop();
                         break;
+
+                    case GAME_STATE.GAME_STATE_GAME_OVER:
+                        ui.showGameOver();
+                        gameState = GAME_STATE.GAME_STATE_MAIN_MENU;
+                        break;
                 }
             }
             exitMessage();
+        }
+
+        private void createGame()
+        {
+            game = new TweetsieTrailGame(playerCount);
         }
 
         private void openingMenu()
@@ -78,6 +90,7 @@ namespace TweetsieTrailGame
 
         private void startInfo()
         {
+            createGame();
             List<HunterJobInfo> hunterJobList = fileManager.loadHunterJobsInfos();
             for (int i = 0; i < game.PlayerCount; ++i)
             {
@@ -88,17 +101,7 @@ namespace TweetsieTrailGame
             }
             gameState = GAME_STATE.GAME_STATE_SHOPPING;
         }
-        private void loadLocation()
-        {
-            List<Location> locationList = fileManager.loadLocations();
-            Map gameMap = new Map(locationList);
-            
-        }
 
-        private void checkLocation()
-        {
-
-        }
         //private HunterJobInfo createPlayer()
         //{
         //    String name = getPlayerName();
@@ -170,11 +173,16 @@ namespace TweetsieTrailGame
                     }
                 }
                 //this needs to be updated to return a location and handle the location once the location class is created
-                bool arrivedAtLocation = game.travel();
-                game.updateStatus();
-                if (arrivedAtLocation)
+                game.travel();
+                List<Hunter> deadHunters = game.updateStatus();
+                if(deadHunters.Count > 0)
                 {
-
+                    ui.showDead(deadHunters);
+                    if(game.Hunters.Count == 0)
+                    {
+                        gameState = GAME_STATE.GAME_STATE_GAME_OVER;
+                        continueTravel = false;
+                    }
                 }
                 
             }

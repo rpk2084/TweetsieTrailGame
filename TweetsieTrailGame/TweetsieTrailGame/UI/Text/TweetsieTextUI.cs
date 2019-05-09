@@ -112,9 +112,11 @@ namespace TweetsieTrailGame
             int wheelsPurchased = 0;
             int axlesPurchased = 0;
             int batteriesPurchased = 0;
+            int foodPurchased = 0;
             int wheelPrice = 50;
             int axlePrice = 100;
             int batteryPrice = 20;
+            int foodPrice = 1;
             bool exit = true;
 
             while (exit)
@@ -124,6 +126,7 @@ namespace TweetsieTrailGame
                 shoppingMainMenu.Options.Add("Wheels");
                 shoppingMainMenu.Options.Add("Axles");
                 shoppingMainMenu.Options.Add("Batteries");
+                shoppingMainMenu.Options.Add("Food");
                 shoppingMainMenu.Options.Add("Exit");
                 shoppingMainMenu.InputPrompt = "Enter your choice>>";
                 presenter.showTextUIModel(shoppingMainMenu);
@@ -156,6 +159,13 @@ namespace TweetsieTrailGame
                         cart.Batteries += batteriesPurchased;
                         break;
                     case 4:
+                        shoppingSubMenu.Header.Add("You have " + cart.Food + " pounds of food in your cart and $" + cart.Money);
+                        shoppingSubMenu.Header.Add("Food costs $" + foodPrice);
+                        foodPurchased = getMoneyOption(shoppingSubMenu, cart, foodPrice);
+                        cart.Money -= foodPrice * foodPurchased;
+                        cart.Food += foodPurchased;
+                        break;
+                    case 5:
                         exit = false;
                         break;
                 }
@@ -245,6 +255,27 @@ namespace TweetsieTrailGame
             fightWonModel.Header.Add(enemy.ScoreValue + " points have been added to your final score");
             fightWonModel.InputPrompt = "Press any key to continue>>";
             presenter.showTextUIModel(fightWonModel);
+            inputController.waitForKeyPress();
+        }
+
+        public void showDead(List<Hunter> deadHunters)
+        {
+            TextUIModel model = new TextUIModel();
+            foreach(Hunter deadHunter in deadHunters)
+            {
+                model.Header.Add(deadHunter.Name + " has died");
+            }
+            model.InputPrompt = "Press any key to continue>>";
+            presenter.showTextUIModel(model);
+            inputController.waitForKeyPress();
+        }
+
+        public void showGameOver()
+        {
+            TextUIModel model = new TextUIModel();
+            model.Header.Add("Game Over");
+            model.InputPrompt = "Press any key to return to the main menu>>";
+            presenter.showTextUIModel(model);
             inputController.waitForKeyPress();
         }
     }

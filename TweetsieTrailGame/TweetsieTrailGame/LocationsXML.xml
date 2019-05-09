@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Locations>
+  <Location Name="Johnson City">
+    <Distance>0</Distance>
+    <Stop?>false</Stop>
+    <Breakchance>0</Breakchance>
+    <Next>TrailHead</Next>
+  </Location>
+  <Location Name="TrailHead">
+    <Distance>3</Distance>
+    <Stop?>true</Stop>
+    <Breakchance>20</Breakchance>
+    <Next>FencedBridge</Next>
+  </Location>
+  <Location Name="FencedBridge">
+    <Distance>6</Distance>
+    <Stop?>true</Stop>
+    <Breakchance>20</Breakchance>
+    <Next>HomelessBridge</Next>
+  </Location>
+  <Location Name="HomelessBridge">
+    <Distance>9</Distance>
+    <Stop?>false</Stop>
+    <Breakchance>0</Breakchance>
+    <Next>CountyLine</Next>
+  </Location>
+  <Location Name="CountyLine">
+    <Distance>12</Distance>
+    <Stop?>true</Stop>
+    <Breakchance>25</Breakchance>
+    <Next>DairyFarm</Next>
+  </Location>
+  <Location Name="DairyFarm">
+    <Distance>15</Distance>
+    <Stop?>true</Stop>
+    <Breakchance>25</Breakchance>
+    <Next>TheGeneralStore</Next>
+  </Location>
+  <Location Name="TheGeneralStore">
+    <Distance>18</Distance>
+    <Stop?>false</Stop>
+    <Breakchance>0</Breakchance>
+    <Next>MilliganDepot</Next>
+  </Location>
+  <Location Name="MilliganDepot">
+    <Distance>21</Distance>
+    <Stop?>true</Stop>
+    <Breakchance>25</Breakchance>
+    <Next>OldUnderpass</Next>
+  </Location>
+</Locations>
