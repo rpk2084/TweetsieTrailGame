@@ -88,6 +88,7 @@ namespace TweetsieTrailGame
                     }
                     else
                     {
+                        Distance = currentPlace.Distance;
                         return false;
                     }
                 case 2:

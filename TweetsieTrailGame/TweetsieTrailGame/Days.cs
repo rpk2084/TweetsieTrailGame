@@ -66,5 +66,10 @@ namespace TweetsieTrailGame
         {
             addDay();
         }
+
+        public override string ToString()
+        {
+            return Convert.ToString(Day);
+        }
     }
 }

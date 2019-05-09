@@ -145,14 +145,14 @@ namespace TweetsieTrailGame
             if (fork == true)
             {
                 int option = displayForkFunction(GameMap);
-                GameMap.inWildernessFork(option);
+                return GameMap.inWildernessFork(option);
+
             }
             else
             {
-                GameMap.inWilderness();
+                return GameMap.inWilderness();
             }
-            bool inWilderness = GameMap.inWilderness();
-            return inWilderness;
+            
             
             
         }
