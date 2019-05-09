@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FileManager\Scores.txt" />
     <Content Include="Locations.txt" />
     <Content Include="Enemies.txt" />
     <Content Include="Locations.xml" />
