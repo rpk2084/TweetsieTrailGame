@@ -8,17 +8,10 @@ namespace TweetsieTrailGame
     {
 		public string readFile(string nFile)
         {
-            try
-            {
-                string text = File.ReadAllText(nFile);
+           string text = File.ReadAllText(nFile);
 
-                return text; 
+           return text; 
 
-            }
-            catch
-            {
-                throw "failed to load file" + nFile;
-            }
         }
 
     }
