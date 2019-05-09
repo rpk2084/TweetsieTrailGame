@@ -44,12 +44,14 @@ namespace TweetsieTrailGame
         public FIGHT_STATUS fightRound()
         {
             FIGHT_STATUS status = FIGHT_STATUS.ONGOING;
-            enemy.attack(hunters[rng.Next(0, hunters.Count)]);
-            if (playersAlive())
+            List<Hunter> liveHunters = getLiveHunters();
+            enemy.attack(liveHunters[rng.Next(0, liveHunters.Count)]);
+            liveHunters = getLiveHunters();
+            if (liveHunters.Count > 0)
             {
-                foreach (Hunter hunter in hunters)
+                foreach (Hunter hunter in liveHunters)
                 {
-                    if (hunter.isAlive()) hunter.attack(enemy);
+                    hunter.attack(enemy);
                 }
                 if(!enemy.isAlive())
                 {
@@ -77,5 +79,19 @@ namespace TweetsieTrailGame
             }
             return alive;
         }
+
+        private List<Hunter> getLiveHunters()
+        {
+            List<Hunter> liveHunters = new List<Hunter>();
+            foreach(Hunter hunter in hunters)
+            {
+                if(hunter.isAlive())
+                {
+                    liveHunters.Add(hunter);
+                }
+            }
+            return liveHunters;
+        }
+
     }
 }
