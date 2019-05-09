@@ -4,42 +4,36 @@
     <Health>0</Health>
     <Strength>80</Strength>
     <Food>5</Food>
-    <Value>15</Value>
     <ScoreValue>65</ScoreValue>
   </Enemy>
   <Enemy Name="Homelessman">
     <Health>50</Health>
     <Strength>50</Strength>
     <Food>15</Food>
-    <Value>25</Value>
     <ScoreValue>60</ScoreValue>
   </Enemy>
   <Enemy Name="BigChungus">
     <Health>80</Health>
     <Strength>65</Strength>
     <Food>25</Food>
-    <Value>40</Value>
     <ScoreValue>80</ScoreValue>
   </Enemy>
   <Enemy Name="Tweetsieman">
     <Health>100</Health>
     <Strength>95</Strength>
     <Food>35</Food>
-    <Value>60</Value>
     <ScoreValue>100</ScoreValue>
   </Enemy>
   <Enemy Name="RabidBunny">
     <Health>15</Health>
     <Strength>45</Strength>
     <Food>15</Food>
-    <Value>40</Value>
     <ScoreValue>40</ScoreValue>
   </Enemy>
   <Enemy Name="AnnoyedOldman">
     <Health>10</Health>
     <Strength>5</Strength>
     <Food>5</Food>
-    <Value>10</Value>
     <ScoreValue>10</ScoreValue>
   </Enemy>
 </Enemies>
