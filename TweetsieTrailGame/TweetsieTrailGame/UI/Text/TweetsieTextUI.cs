@@ -112,9 +112,11 @@ namespace TweetsieTrailGame
             int wheelsPurchased = 0;
             int axlesPurchased = 0;
             int batteriesPurchased = 0;
+            int foodPurchased = 0;
             int wheelPrice = 50;
             int axlePrice = 100;
             int batteryPrice = 20;
+            int foodPrice = 1;
             bool exit = true;
 
             while (exit)
@@ -124,6 +126,7 @@ namespace TweetsieTrailGame
                 shoppingMainMenu.Options.Add("Wheels");
                 shoppingMainMenu.Options.Add("Axles");
                 shoppingMainMenu.Options.Add("Batteries");
+                shoppingMainMenu.Options.Add("Food");
                 shoppingMainMenu.Options.Add("Exit");
                 shoppingMainMenu.InputPrompt = "Enter your choice>>";
                 presenter.showTextUIModel(shoppingMainMenu);
@@ -156,6 +159,13 @@ namespace TweetsieTrailGame
                         cart.Batteries += batteriesPurchased;
                         break;
                     case 4:
+                        shoppingSubMenu.Header.Add("You have " + cart.Food + " pounds of food in your cart and $" + cart.Money);
+                        shoppingSubMenu.Header.Add("Food costs $" + foodPrice);
+                        foodPurchased = getMoneyOption(shoppingSubMenu, cart, foodPrice);
+                        cart.Money -= foodPrice * foodPurchased;
+                        cart.Food += foodPurchased;
+                        break;
+                    case 5:
                         exit = false;
                         break;
                 }
