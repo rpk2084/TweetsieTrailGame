@@ -44,7 +44,10 @@
     <Compile Include="FileManager\IFileFormatter.cs" />
     <Compile Include="FileManager\IFileParser.cs" />
     <Compile Include="FileManager\ObjectList.cs" />
+    <Compile Include="FileManager\TextFileParser.cs" />
     <Compile Include="FileManager\TweetsieFileManager.cs" />
+    <Compile Include="FileManager\IFileReader.cs" />
+    <Compile Include="FileManager\FileReader.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Combatant.cs" />
     <Compile Include="Enemy.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scores.txt" />
     <Content Include="Locations.txt" />
     <Content Include="Enemies.txt" />
     <Content Include="Locations.xml" />

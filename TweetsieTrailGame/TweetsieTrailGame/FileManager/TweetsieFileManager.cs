@@ -37,7 +37,27 @@ namespace TweetsieTrailGame
 
         public List<HunterJobInfo> loadHunterJobsInfos()
         {
-            throw new NotImplementedException();
+            List<HunterJobInfo> jobInfos = new List<HunterJobInfo>();
+            ObjectList objList = parser.parseFile("Job");
+
+            int nameColumn = objList.HeaderRow.IndexOf("Name");
+            int healthColumn = objList.HeaderRow.IndexOf("Health");
+            int strengthColumn = objList.HeaderRow.IndexOf("Strength");
+            int multColumn = objList.HeaderRow.IndexOf("ScoreMultiplier");
+            int moneyColumn = objList.HeaderRow.IndexOf("StartingMoney");
+
+            foreach(List<string> obj in objList.ObjectRows)
+            {
+                jobInfos.Add(new HunterJobInfo(
+                       obj[nameColumn],
+                       int.Parse(obj[healthColumn]),
+                       int.Parse(obj[strengthColumn]),
+                       double.Parse(obj[multColumn]),
+                       int.Parse(obj[moneyColumn])
+                    )
+                );
+            }
+            return jobInfos;
         }
 
         public List<Location> loadLocations()
@@ -70,12 +90,33 @@ namespace TweetsieTrailGame
 
         public ScoreTable loadScoreTable()
         {
-            throw new NotImplementedException();
+            List<Score> scores = new List<Score>();
+            ObjectList objList = parser.parseFile("Scores");
+
+            int nameColumn = objList.HeaderRow.IndexOf("Name");
+            int valueColumn = objList.HeaderRow.IndexOf("Score");
+            foreach(List<string> score in objList.ObjectRows)
+            {
+                scores.Add(new Score(score[nameColumn], int.Parse(score[valueColumn])));
+            }
+            ScoreTable table = new ScoreTable(scores);
+            table.sort();
+            return table;
         }
 
         public void saveScoreTable(ScoreTable scores)
         {
-            throw new NotImplementedException();
+            ObjectList objList = new ObjectList();
+            objList.HeaderRow.Add("Name");
+            objList.HeaderRow.Add("Score");
+            for(int i = 0; i < scores.Scores.Count; ++i)
+            {
+                objList.ObjectRows.Add(new List<string>());
+                objList.ObjectRows[i].Add(scores.Scores[i].Name);
+                objList.ObjectRows[i].Add(scores.Scores[i].Value.ToString());
+            }
+
+            formatter.saveFile(objList);
         }
     }
 }
